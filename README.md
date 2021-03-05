@@ -8,8 +8,8 @@
 
 ## General Info
 This browser based web application to ...
-PM: Daniel Zhang
-developer: Dongwan Kim A01205697
+PM: Daniel Zhang <br>
+Developer: Dongwan Kim A01205697
 	
 ## Technologies
 Technologies used for this project:
