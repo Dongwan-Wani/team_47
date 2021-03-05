@@ -9,7 +9,7 @@
 ## General Info
 This browser based web application to ... <br>
 PM: Daniel Zhang <br>
-Designer:       <br>
+Designer: Jonghoon Jang A01240621 <br>
 Developer: Dongwan Kim A01205697
 	
 ## Technologies
