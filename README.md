@@ -8,6 +8,7 @@ A01205697 Dongwan Kim
 
 ## General Info
 This browser based web application to ...
+PM: Daniel Zhang
 	
 ## Technologies
 Technologies used for this project:
