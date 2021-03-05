@@ -7,7 +7,7 @@
 * [Contents](#content)
 
 ## General Info
-This browser based web application to ...
+This browser based web application to ... <br>
 PM: Daniel Zhang <br>
 Developer: Dongwan Kim A01205697
 	
