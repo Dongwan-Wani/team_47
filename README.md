@@ -1,4 +1,4 @@
-A01205697 Dongwan Kim
+
 
 ## My Web Application (Title)
 
@@ -9,6 +9,7 @@ A01205697 Dongwan Kim
 ## General Info
 This browser based web application to ...
 PM: Daniel Zhang
+developer: Dongwan Kim A01205697
 	
 ## Technologies
 Technologies used for this project:
