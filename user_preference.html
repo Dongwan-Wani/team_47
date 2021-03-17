@@ -13,7 +13,9 @@
         integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link href="./styles/blah.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
-
+    <link rel="stylesheet" href="./styles/common.css"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Ranchers&display=swap" rel="stylesheet">
     <!-- Optional styles and scripts of your own -->
     <style>
         form.example input[type=text] {
@@ -71,7 +73,9 @@
             margin-left: 5px;
         }
 
-      
+        body {
+            margin-bottom: 10vh;
+        }
     </style>
 
 </head>
@@ -82,9 +86,9 @@
     <!-- The following is HTML for layout -->
     <!-------------------------------------->
     <!-- Header Navigation Bar -->
-    <div class="appname d-flex flex-row justify-content-center align-items-center">
+    <div class="appname d-flex flex-row justify-content-center align-items-center sticky-top" style="height: 15vh;">
         <div class="d-flex">
-            <h1>No More Hesitation</h1>
+            <h1>dine-o</h1>
         </div>
     </div>
 
@@ -92,133 +96,136 @@
         <p><b>What do you care about the most when it comes to food and service quality?</b></p>
     </div>
     <hr>
-    <div class="container-fluid">
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-            <label class="form-check-label" for="flexRadioDefault1">
-                Food quality only
-            </label>
-        </div>
-        <div class="form-check">
+    <div class="preference_page" style="padding-bottom: 50px;">
+        <div class="container-fluid">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">
+                    Food quality only
+                </label>
+            </div>
+            <div class="form-check">
 
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-            <label class="form-check-label" for="flexRadioDefault1">
-                Service quality only
-            </label>
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">
+                    Service quality only
+                </label>
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">
+                    Both
+                </label>
+            </div>
         </div>
 
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-            <label class="form-check-label" for="flexRadioDefault1">
-                Both
-            </label>
+        <div class="container-fluid mt-4">
+            <p><b>What type of food do you like?</b></p>
         </div>
-    </div>
+        <hr>
+        <div class="container-fluid d-flex flex-row flex-wrap align-content-start mb-3">
+            <div class="form-check me-3">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Chinese
+                </label>
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            </div>
+            <div class="form-check me-3">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Thai
+                </label>
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+            </div>
+            <div class="form-check me-3">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Italian
+                </label>
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+            </div>
+            <div class="form-check me-3">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Janpanese
+                </label>
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+            </div>
+            <div class="form-check me-3">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Korean
+                </label>
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+            </div>
+            <div class="form-check me-3">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Polish
+                </label>
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+            </div>
+            <div class="form-check me-3">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Greek
+                </label>
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+            </div>
+            <div class="form-check me-3">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Mexican
+                </label>
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+            </div>
+            <div class="form-check me-3">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Ethiopian
+                </label>
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+            </div>
+            <div class="form-check me-3">
+                <label class="form-check-label" for="flexCheckDefault">
+                    French
+                </label>
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+            </div>
+            <div class="form-check me-3">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Malaysian
+                </label>
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+            </div>
+            <div class="form-check me-3">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Brazilian
+                </label>
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+            </div>
+            <div class="form-check me-3">
+                <label class="form-check-label" for="flexCheckDefault">
+                    American BBQ
+                </label>
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+            </div>
+        </div>
+        
+        <hr>
 
-    <div class="container-fluid mt-4">
-        <p><b>What type of food do you like?</b></p>
-    </div>
-    <hr>
-    <div class="container-fluid d-flex flex-row flex-wrap align-content-start mb-3">
-        <div class="form-check me-3">
-            <label class="form-check-label" for="flexCheckDefault">
-                Chinese
-            </label>
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+        <div class="d-flex flex-row justify-content-start align-self-center">
+            <div class="vegeteriancheck">
+                <p class="d-inline"><b>Please check if you are vegeterain</b></p>
+            </div>
+            <div>
+                <input type="checkbox" id="vegeterain">
+            </div>
         </div>
-        <div class="form-check me-3">
-            <label class="form-check-label" for="flexCheckDefault">
-                Thai
-            </label>
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+        <hr>
+        <div class="d-flex flex-row justify-content-start align-self-center">
+            <div class="vegeteriancheck">
+                <p class="d-inline"><b>Please check if you are vegan</b></p>
+            </div>
+            <div>
+                <input type="checkbox" id="vegeterain">
+            </div>
         </div>
-        <div class="form-check me-3">
-            <label class="form-check-label" for="flexCheckDefault">
-                Italian
-            </label>
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-        </div>
-        <div class="form-check me-3">
-            <label class="form-check-label" for="flexCheckDefault">
-                Janpanese
-            </label>
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-        </div>
-        <div class="form-check me-3">
-            <label class="form-check-label" for="flexCheckDefault">
-                Korean
-            </label>
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-        </div>
-        <div class="form-check me-3">
-            <label class="form-check-label" for="flexCheckDefault">
-                Polish
-            </label>
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-        </div>
-        <div class="form-check me-3">
-            <label class="form-check-label" for="flexCheckDefault">
-                Greek
-            </label>
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-        </div>
-        <div class="form-check me-3">
-            <label class="form-check-label" for="flexCheckDefault">
-                Mexican
-            </label>
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-        </div>
-        <div class="form-check me-3">
-            <label class="form-check-label" for="flexCheckDefault">
-                Ethiopain
-            </label>
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-        </div>
-        <div class="form-check me-3">
-            <label class="form-check-label" for="flexCheckDefault">
-                French
-            </label>
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-        </div>
-        <div class="form-check me-3">
-            <label class="form-check-label" for="flexCheckDefault">
-                Malaysian
-            </label>
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-        </div>
-        <div class="form-check me-3">
-            <label class="form-check-label" for="flexCheckDefault">
-                Brazilian
-            </label>
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-        </div>
-        <div class="form-check me-3">
-            <label class="form-check-label" for="flexCheckDefault">
-                American BBQ
-            </label>
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-        </div>
-    </div>
-    <div class="container-fluid">
-        <p><b>Are you vegan?</b></p>
-    </div>
-    <hr>
-
-    <div class="d-flex flex-row justify-content-start align-self-center">
-        <div class="vegeteriancheck">
-            <p class="d-inline"><b>Please check if you are vegeterain</b></p>
-        </div>
-        <div>
-            <input type="checkbox" id="vegeterain">
-        </div>
-    </div>
-    <hr>
-    <div class="d-flex flex-row justify-content-start align-self-center">
-        <div class="vegeteriancheck">
-            <p class="d-inline"><b>Please check if you are vegan</b></p>
-        </div>
-        <div>
-            <input type="checkbox" id="vegeterain">
+        <div class="d-flex flex-row justify-content-end align-self-center me-3 mb-3">
+            <a href=""><input class="btn btn-primary" type="submit" value="Submit"></a>
         </div>
     </div>
 
@@ -227,15 +234,20 @@
 
 
     <!-- Bottom: Login, Home and Hangberger menu -->
-    <nav class="navbar navbar-expand-lg fixed-bottom">
-        <div class="container-fluid">
-            <button class="btn" href="#"><i class="bi bi-person-circle" style="font-size:5rem;"></i></button>
-            <button class="btn" href="#"><i class="bi bi-house-door-fill" style="font-size:5rem;"></i></button>
+    <nav class="navbar navbar-expand-lg fixed-bottom d-flex flex-row">
+        <div class="container-fluid d-flex flex-row">
+            <div>
+                <button class="btn" style="height:10vh;" href="#"><i class="bi bi-person-circle" style="font-size:2.5em;"></i></button>
+            </div>
+            <div>
+            <button class="btn" href="#"><i class="bi bi-house-door-fill"
+                    style="font-size:2.5em;"></i></button>
+            </div>
             <ul class="navbar-nav">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="bi bi-list" style="font-size: 5rem; color: rgb(43, 35, 35);"></i>
+                        <i class="bi bi-list" style="font-size: 2.5em; color: rgb(43, 35, 35);"></i>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#">Recommendations</a>
