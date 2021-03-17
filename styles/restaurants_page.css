@@ -1,0 +1,15 @@
+img {
+    height: 60px;
+    width: 80px;
+    border-radius: 50%;
+}
+
+.img_div {
+    border-width:2px;  
+    border-style:solid ;
+    border-color: bisque;
+    border-radius: 1%;
+    background-color: rgb(241, 235, 226);
+    height: 80px;
+    width: 70%;
+}

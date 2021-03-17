@@ -1,0 +1,14 @@
+        img {
+            height: 150px;
+            width: 200px;
+            border-radius: 50%;
+            padding-left: 15px;
+        }
+
+        .img_div {
+            border-width:2px;  
+            border-style:solid ;
+            border-color: bisque;
+            border-radius: 5%;
+            background-color: rgb(241, 235, 226);
+        }
