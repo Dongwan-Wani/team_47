@@ -3,3 +3,22 @@ h1 {
     font-family: 'Ranchers', cursive;
     color: white;
 }
+
+.button {
+    background-color:#84ad52 ;
+}
+
+.appname {
+    text-align: center;
+    background-color: #84ad52;
+    height: 20vh;
+    margin-bottom: 20px;
+}
+
+.navbar {
+    background-color: #84ad52;
+}
+
+div.dropdown-menu {
+    background-color: #84ad52;
+}

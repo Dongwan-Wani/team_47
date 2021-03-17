@@ -105,7 +105,7 @@
 
     <div class="container">
         <div class="d-flex justify-content-end">
-            <div class="d-flex justify-content-end bg-success mt-2">
+            <div class="button d-flex justify-content-end mt-2">
                 <button class="btn text-light fs-5 yellow-800" href="#">Write a review</button>
             </div>
         </div>
@@ -114,27 +114,25 @@
 
 
     <!-- Bottom: Login, Home and Hangberger menu -->
-    <nav class="navbar navbar-expand-lg fixed-bottom d-flex flex-row">
-        <div class="container-fluid d-flex flex-row">
-            <div>
-                <button class="btn" style="height:10vh;" href="#"><i class="bi bi-person-circle"
-                        style="font-size:2.5em;"></i></button>
+    <nav class="navbar navbar-expand fixed-bottom">
+        <div class="container-fluid">
+            <div class="btn-group dropdown">
+                <ul class="navbar-nav dropup">
+                    <li class="nav-item dropup">
+                        <a class="nav-link dropup-toggle" href="#" id="navbarDropup" role="button"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="bi bi-list" style="font-size: 3rem; color: rgb(43, 35, 35);"></i>
+                        </a>
+                        <div class="dropdown-menu dropup" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#"><b>Recommendations</b></a>
+                            <a class="dropdown-item" href="#"><b>Reviews</b></a>
+                            <a class="dropdown-item" href="#"><b>Settings</b></a>
+                        </div>
+                    </li>
+                </ul>
             </div>
-            <div>
-                <button class="btn" href="#"><i class="bi bi-house-door-fill" style="font-size:2.5em;"></i></button>
-            </div>
-            <ul class="navbar-nav">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="bi bi-list" style="font-size: 2.5em; color: rgb(43, 35, 35);"></i>
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Recommendations</a>
-                        <a class="dropdown-item" href="#">Parking info</a>
-                    </div>
-                </li>
-            </ul>
+            <button class="btn" href="#"><i class="bi bi-house-door-fill" style="font-size:3rem;"></i></button>
+            <button class="btn" href="#"><i class="bi bi-person-circle" style="font-size:3rem;"></i></button>
         </div>
     </nav>
 
