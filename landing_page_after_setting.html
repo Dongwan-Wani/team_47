@@ -174,7 +174,10 @@
             img_div.className = "food mb-2 pe-3 pt-1"
             let image = document.createElement("img")
             image.setAttribute("src", pic)
-            img_div.appendChild(image)
+            let a_link = document.createElement("a")
+            a_link.setAttribute("href", "restaurants_page.html?category=" + name)
+            a_link.appendChild(image)  
+            img_div.appendChild(a_link)
             let text_div = document.createElement("div")
             let para = document.createElement("h5")
             text_div.appendChild(para)
