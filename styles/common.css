@@ -22,3 +22,8 @@ h1 {
 div.dropdown-menu {
     background-color: #84ad52;
 }
+
+h5 {
+    text-transform: capitalize;
+}
+

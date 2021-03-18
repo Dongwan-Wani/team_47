@@ -10,6 +10,11 @@ img {
     border-color: bisque;
     border-radius: 1%;
     background-color: rgb(241, 235, 226);
-    height: 80px;
+    height: 100%;
     width: 70%;
+    overflow: auto;
+}
+
+h5 {
+    font:bold;
 }

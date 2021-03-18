@@ -13,8 +13,8 @@
         integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link href="./styles/blah.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="./styles/common.css"> 
-    <link rel="stylesheet" href="./styles/restaurants_page.css"> 
+    <link rel="stylesheet" href="./styles/common.css">
+    <link rel="stylesheet" href="./styles/restaurants_page.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Ranchers&display=swap" rel="stylesheet">
     <!-- Optional styles and scripts of your own -->
@@ -52,7 +52,7 @@
 
         .appname {
             text-align: center;
-            background-color:#84ad52;
+            background-color: #84ad52;
             margin-bottom: 20px;
         }
 
@@ -76,7 +76,6 @@
         .body {
             margin-bottom: 60px;
         }
-
     </style>
 
 </head>
@@ -110,82 +109,93 @@
     </div>
 
     <div class="food_preference" style="padding-bottom: 100px;">
-        <div class="mt-3 ms-5 d-flex flex-row flex-wrap">
-            <div class="img_div d-flex flex-row align-items-center me-5 mb-1">
-                <div class="food mb-2 pe-3 pt-1">
+        <div class="food_review mt-3 ms-5 d-flex flex-row flex-wrap">
+            <div class="individual_restaurant_page img_div d-flex flex-row align-items-center me-5 mb-1" style="height: 100%;overflow: auto;">
+                <div class="review_individual_restaurant mb-2 pe-3 pt-1">
                     <img src="./images/food1.PNG" alt="food">
                 </div>
-                <div>
+                <div class="review_restaurant_page">
                     <h5>Dynasty</h5>
-                    <p>Food quality</p>
+                    <h6>Food quality</h6>
+                    <p>I personally think this is probably the best Chinese food in town.
+                        The pickled pepper fish head can't be more authentic. Also, the pepper fried egg dish brings my
+                        childhood
+                        memories back!
+                    </p>
                 </div>
-            </div>  
+            </div>
         </div>
-        <div class="mt-3 ms-5 d-flex flex-row flex-wrap">
-            <div class="img_div d-flex flex-row align-items-center me-5 mb-1">
-                <div class="food mb-2 pe-3 pt-1">
-                    <img src="./images/food2.PNG" alt="food">
-                </div>
-                <div>
-                    <h5>Happy Noodle House</h5>
-                    <p>Food quality</p>
-                </div>
-            </div>  
-        </div> 
-        <div class="mt-3 ms-5 d-flex flex-row flex-wrap">
-            <div class="img_div d-flex flex-row align-items-center me-5 mb-1">
-                <div class="food mb-2 pe-3 pt-1">
-                    <img src="./images/food3.PNG" alt="food">
-                </div>
-                <div>
-                    <h5>Happy Noodle House</h5>
-                    <p>Food quality</p>
-                </div>
-            </div>  
-        </div>   
 
     </div>
 
 
-            <!-- Bottom: Login, Home and Hangberger menu -->
-            <nav class="navbar navbar-expand fixed-bottom">
-                <div class="container-fluid">
-                    <div class="btn-group dropdown">
-                        <ul class="navbar-nav dropup">
-                            <li class="nav-item dropup">
-                                <a class="nav-link dropup-toggle" href="#" id="navbarDropup" role="button"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="bi bi-list" style="font-size: 5rem; color: rgb(43, 35, 35);"></i>
-                                </a>
-                                <div class="dropdown-menu dropup" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#"><b>Recommendations</b></a>
-                                    <a class="dropdown-item" href="#"><b>Reviews</b></a>
-                                    <a class="dropdown-item" href="#"><b>Settings</b></a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <button class="btn" href="#"><i class="bi bi-house-door-fill" style="font-size:5rem;"></i></button>
-                    <button class="btn" href="#"><i class="bi bi-person-circle" style="font-size:5rem;"></i></button>
-                </div>
-            </nav>
+    <!-- Bottom: Login, Home and Hangberger menu -->
+    <nav class="navbar navbar-expand fixed-bottom">
+        <div class="container-fluid">
+            <div class="btn-group dropdown">
+                <ul class="navbar-nav dropup">
+                    <li class="nav-item dropup">
+                        <a class="nav-link dropup-toggle" href="#" id="navbarDropup" role="button"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="bi bi-list" style="font-size: 5rem; color: rgb(43, 35, 35);"></i>
+                        </a>
+                        <div class="dropdown-menu dropup" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#"><b>Recommendations</b></a>
+                            <a class="dropdown-item" href="#"><b>Reviews</b></a>
+                            <a class="dropdown-item" href="#"><b>Settings</b></a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <button class="btn" href="#"><i class="bi bi-house-door-fill" style="font-size:5rem;"></i></button>
+            <button class="btn" href="#"><i class="bi bi-person-circle" style="font-size:5rem;"></i></button>
+        </div>
+    </nav>
 
 
-            <!----------------------------------------------->
-            <!-- JS: Boostrap, Firebase, API related    -->
-            <!----------------------------------------------->
-            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-                crossorigin="anonymous"></script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
-                crossorigin="anonymous">
-                </script>
+    <!----------------------------------------------->
+    <!-- JS: Boostrap, Firebase, API related    -->
+    <!----------------------------------------------->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
+        </script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
+    <script src="scripts/firebase_api.js"></script>
 
-            <!--------------------------------------------------------------------->
-            <!-- JS files: Your own JavaScript functions included here    -->
-            <!--------------------------------------------------------------------->
-
+    <!--------------------------------------------------------------------->
+    <!-- JS files: Your own JavaScript functions included here    -->
+    <!--------------------------------------------------------------------->
+    <script>
+        function add_restaurant(name, img, review_title ) {
+            let image_div = document.createElement("div")
+            image_div.className = "img_div d-flex flex-row align-items-center me-5 mb-1"
+            let image_source_div = document.createElement("div")
+            image_source_div.className = "review_individual_restaurant mb-2 pe-3 pt-1"
+            let image = document.createElement("img")
+            image.setAttribute("src", img)
+            image_source_div.appendChild(image)
+            let review_text = document.createElement("div")
+            let title = document.createElement("h5")
+            title.innerText = "Happy Noodle House"
+            review_text.appendChild(title)
+            let review_header = document.createElement("h6")
+            review_header.innerText = "Food quality"
+            review_text.appendChild(review_header)
+            let review_description = document.createElement("p")
+            review_description.innerText = "I personally think this is probably the best Chinese food in town." 
+            review_text.appendChild(review_description)
+            image_div.appendChild(image_source_div)
+            image_div.appendChild(review_text)
+            document.getElementsByClassName("food_review")[0].appendChild(image_div)
+        }
+        add_restaurant("Dynasty", "./images/chinese_category.jpg", "Dynasty" )
+    </script>
 </body>
 
 </html>
