@@ -148,7 +148,7 @@
                 </ul>
             </div>
             <button class="btn" href="#"><i class="bi bi-house-door-fill" style="font-size:5rem;"></i></button>
-            <button class="btn" href="#"><i class="bi bi-person-circle" style="font-size:5rem;"></i></button>
+            <a href="login.html"><button class="btn" href="#"><i class="bi bi-person-circle" style="font-size:3rem;"></i></button></a>
         </div>
     </nav>
 
@@ -182,7 +182,7 @@
             image_source_div.appendChild(image)
             let review_text = document.createElement("div")
             let title = document.createElement("h5")
-            title.innerText = "Happy Noodle House"
+            title.innerText = name
             review_text.appendChild(title)
             let review_header = document.createElement("h6")
             review_header.innerText = "Food quality"
@@ -194,7 +194,19 @@
             image_div.appendChild(review_text)
             document.getElementsByClassName("food_review")[0].appendChild(image_div)
         }
-        add_restaurant("Dynasty", "./images/chinese_category.jpg", "Dynasty" )
+        //add_restaurant("Dynasty", "./images/chinese_category.jpg", "Food quality" )
+
+        function readrestaurants(category) {
+            let reference = db.collection("categories").doc(category)
+            db.collection("restaurants").where("category", "==", reference)
+            .onSnapshot(function (query) {
+                query.forEach(function (document) {
+                    add_restaurant(document.get("name"), "./chinese_category.jpg", "Food quality")
+                })
+            })
+        }
+
+        readrestaurants("chinese")
     </script>
 </body>
 
