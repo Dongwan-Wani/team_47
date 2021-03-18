@@ -110,20 +110,7 @@
 
     <div class="food_preference" style="padding-bottom: 100px;">
         <div class="food_review mt-3 ms-5 d-flex flex-row flex-wrap">
-            <div class="individual_restaurant_page img_div d-flex flex-row align-items-center me-5 mb-1" style="height: 100%;overflow: auto;">
-                <div class="review_individual_restaurant mb-2 pe-3 pt-1">
-                    <img src="./images/food1.PNG" alt="food">
-                </div>
-                <div class="review_restaurant_page">
-                    <h5>Dynasty</h5>
-                    <h6>Food quality</h6>
-                    <p>I personally think this is probably the best Chinese food in town.
-                        The pickled pepper fish head can't be more authentic. Also, the pepper fried egg dish brings my
-                        childhood
-                        memories back!
-                    </p>
-                </div>
-            </div>
+           
         </div>
 
     </div>
@@ -174,7 +161,7 @@
     <script>
         function add_restaurant(name, img, review_title ) {
             let image_div = document.createElement("div")
-            image_div.className = "img_div d-flex flex-row align-items-center me-5 mb-1"
+            image_div.className = "img_div d-flex flex-row align-items-center me-5 mb-5"
             let image_source_div = document.createElement("div")
             image_source_div.className = "review_individual_restaurant mb-2 pe-3 pt-1"
             let image = document.createElement("img")
@@ -188,7 +175,7 @@
             review_header.innerText = "Food quality"
             review_text.appendChild(review_header)
             let review_description = document.createElement("p")
-            review_description.innerText = "I personally think this is probably the best Chinese food in town." 
+            review_description.innerText = "I personally think this is probably the best Chinese food in town. The pickled pepper fish head can't be more authentic. Also, the pepper fried egg dish brings my childhood memories back!" 
             review_text.appendChild(review_description)
             image_div.appendChild(image_source_div)
             image_div.appendChild(review_text)
@@ -201,12 +188,16 @@
             db.collection("restaurants").where("category", "==", reference)
             .onSnapshot(function (query) {
                 query.forEach(function (document) {
-                    add_restaurant(document.get("name"), "./chinese_category.jpg", "Food quality")
+                    add_restaurant(document.get("name"), document.get("pictures"), "Food quality")
                 })
             })
         }
 
-        readrestaurants("chinese")
+        
+        const params = new URLSearchParams(window.location.search)
+        const value = params.get('category')
+
+        readrestaurants(value)
     </script>
 </body>
 
