@@ -87,39 +87,27 @@
 
 
     <div class="container" style="padding-bottom: 100px;">
-        <div class="mb-3">
-            <label for="formGroupExampleInput" class="form-label">Type restaurant name</label>
-            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="restaurant name">
-        </div>
-        <br>
         <form>
-            
+            <h2>Search Reviews</h2>
             <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Review for food quality</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" style="width: 80%;"></textarea>
+                <label for="exampleFormControlInput1" class="form-label"></label>
+                <input type="email" class="form-control" id="exampleFormControlInput1"
+                    placeholder="▷search restaurants or menu">
             </div>
             <br>
             <br>
-            <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Review for service quality</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" style="width: 80%;"></textarea>
-            </div>
+            <h4>Review category</h4>
+            <select class="form-select" multiple aria-label="multiple select example">
+                <option selected>All reviews</option>
+                <option value="1">Food quality</option>
+                <option value="2">Service quality</option>
+                <option value="3">Individual dish</option>
+            </select>
             <br>
-            <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Review for an individual dish</label>
-                <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                    <option selected>choose the dish</option>
-                    <option value="1">dish 1</option>
-                    <option value="2">dish 2</option>
-                    <option value="3">dish 3</option>
-                    <option value="4">dish 4</option>
-                </select>
-                <br>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" style="width: 80%;"></textarea>
-            </div>
         </form>
         <div class="d-flex flex-row justify-content-end align-self-center me-3 mb-3">
-            <a href=""><input class="btn button" type="submit" value="save" style="color: white; font-size: large;"></a>
+            <a href="landing_page_after_setting.html"><input class="btn button" type="submit" value="search"
+                    style="color: white; font-size: large;"></a>
         </div>
     </div>
 
@@ -140,15 +128,18 @@
                             <i class="bi bi-list" style="font-size: 3rem; color: rgb(43, 35, 35);"></i>
                         </a>
                         <div class="dropdown-menu dropup" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#"><b>Recommendations</b></a>
-                            <a class="dropdown-item" href="#"><b>Reviews</b></a>
-                            <a class="dropdown-item" href="#"><b>Settings</b></a>
+                            <a class="dropdown-item" href="#"><i class="bi bi-hand-thumbs-up-fill"></i><b>
+                                    RECOMMENDATIONS</b></a>
+                            <a class="dropdown-item" href="#"><i class="bi bi-list-stars"></i><b> REVIEWS</b></a>
+                            <a href="login.html"><button class="btn" href="#"><i class="bi bi-person-circle"
+                                        style="font-size:3rem;"></i></button></a>
                         </div>
                     </li>
                 </ul>
             </div>
             <button class="btn" href="#"><i class="bi bi-house-door-fill" style="font-size:3rem;"></i></button>
-            <button class="btn" href="#"><i class="bi bi-person-circle" style="font-size:3rem;"></i></button>
+            <a href="login.html"><button class="btn" href="#"><i class="bi bi-person-circle"
+                        style="font-size:3rem;"></i></button></a>
         </div>
     </nav>
 
