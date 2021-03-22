@@ -27,3 +27,14 @@ h5 {
     text-transform: capitalize;
 }
 
+.logo {
+    width: 80px;
+    height: 60px;
+    font-weight: bold;
+    color: white;
+}
+
+div .logo {
+    margin-right: 10px;
+}
+
