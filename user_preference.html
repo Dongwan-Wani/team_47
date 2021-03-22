@@ -13,9 +13,10 @@
         integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link href="./styles/blah.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="./styles/common.css"> 
+    <link rel="stylesheet" href="./styles/common.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Ranchers&display=swap" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
     <!-- Optional styles and scripts of your own -->
     <style>
         form.example input[type=text] {
@@ -49,7 +50,7 @@
             display: table;
         }
 
-        
+
 
         form.example {
             width: 80%;
@@ -202,7 +203,7 @@
                 <p class="d-inline"><b>Please check if you are vegeterain</b></p>
             </div>
             <div>
-                <input type="checkbox" id="vegeterain">
+                <input type="checkbox" id="vegeterain" name="vegeterain" value="true">
             </div>
         </div>
         <hr>
@@ -210,16 +211,16 @@
         <br>
 
         <div class="d-flex flex-row justify-content-start align-self-center">
-            <div class="vegeteriancheck">
+            <div class="vegancheck">
                 <p class="d-inline"><b>Please check if you are vegan</b></p>
             </div>
             <div>
-                <input type="checkbox" id="vegeterain">
+                <input type="checkbox" id="vegan" name="vegan" value="true">
             </div>
         </div>
         <hr>
         <div class="d-flex flex-row justify-content-end align-self-center me-3 mb-3">
-            <a href="landing_page_after_setting.html"><input class="btn button" type="submit" value="save" style="color: white;"></a>
+            <a href="#"><input id="sButton" class="btn button" type="submit" value="save" style="color: white;"></a>
         </div>
     </div>
 
@@ -238,15 +239,18 @@
                             <i class="bi bi-list" style="font-size: 3rem; color: rgb(43, 35, 35);"></i>
                         </a>
                         <div class="dropdown-menu dropup" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#"><i class="bi bi-hand-thumbs-up-fill"></i><b>  RECOMMENDATIONS</b></a>
-                            <a class="dropdown-item" href="#"><i class="bi bi-list-stars"></i><b>  REVIEWS</b></a>
-                            <a class="dropdown-item" href="user_preference.html"><b><i class="bi bi-gear"></i>  SETTINGS</b></a>
+                            <a class="dropdown-item" href="#"><i class="bi bi-hand-thumbs-up-fill"></i><b>
+                                    RECOMMENDATIONS</b></a>
+                            <a class="dropdown-item" href="#"><i class="bi bi-list-stars"></i><b> REVIEWS</b></a>
+                            <a class="dropdown-item" href="user_preference.html"><b><i class="bi bi-gear"></i>
+                                    SETTINGS</b></a>
                         </div>
                     </li>
                 </ul>
             </div>
             <button class="btn" href="#"><i class="bi bi-house-door-fill" style="font-size:3rem;"></i></button>
-            <a href="login.html"><button class="btn" href="#"><i class="bi bi-person-circle" style="font-size:3rem;"></i></button></a>
+            <a href="login.html"><button class="btn" href="#"><i class="bi bi-person-circle"
+                        style="font-size:3rem;"></i></button></a>
         </div>
     </nav>
 
@@ -260,11 +264,65 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
         </script>
-
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
+    <script src="./scripts/firebase_api.js"></script>
     <!--------------------------------------------------------------------->
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
+    <script>
+        firebase.auth().onAuthStateChanged(function (user) {
+            if (user) {
+                // User is signed in.
+                console.log("Success")
+                var user = firebase.auth().currentUser;
+                var uid = user.uid;
+                console.log(uid)
+                // db.collection("users").doc(user.uid).update({
+                // "vegan": true,
+                // "foods": ["korean", "italian", "chinese"]
+                // }, {merge: true})
+            } else {
+                // No user is signed in.
+                console.log("not log-in")
+            }
+        });
+        let saveButton = document.querySelector("#sButton");
+        saveButton.addEventListener("click", function () {
+            console.log("button clicked.");
 
+            // vegeterainCheck = document.querySelector('input[name="vegan"]:checked').value;
+            // veganCheck = document.querySelector('input[name="vegan"]:checked').value;
+            // console.log(veganCheck)
+        
+            if (document.querySelector('input[name="vegeterain"]').checked == true) {
+                vegeterain = document.querySelector('input[name="vegeterain"]').value;
+                console.log("vegeterainCheck:", vegeterain)
+            } else {
+                vegeterain = false
+                console.log("vegeterainCheck:", vegeterain)
+            }
+            if (document.querySelector('input[name="vegan"]').checked == true) {
+                vegan = document.querySelector('input[name="vegan"]').value;
+                console.log("veganCheck:", vegan)
+            } else {
+                vegan = false
+                console.log("veganCheck:", vegan)
+            }
+            var user = firebase.auth().currentUser;
+            var uid = user.uid;
+            db.collection("users").doc(user.uid).update({
+                "vegeterain": vegeterain
+            }, { merge: true })
+            db.collection("users").doc(user.uid).update({
+                "vegan": vegan
+            }, { merge: true })
+
+        });
+
+    </script>
 </body>
 
 </html>
