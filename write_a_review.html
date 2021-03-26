@@ -170,6 +170,26 @@
     <!--------------------------------------------------------------------->
     <script>
         
+        function readReviews(id) {
+            let reference = db.collection("restaurants").doc(id)
+            reference.get().then(function (restaurant) {
+
+                db.collection("food_quality_review").where("restaurant", "==", reference)
+                    .onSnapshot(function (query) {
+                        query.forEach(function (document) {
+                            add_review(restaurant.get("name"), "./Dynasty.jpg", "Food quality", document.get("review"))
+                        })
+                    })
+
+            })
+
+        }
+
+
+        const params = new URLSearchParams(window.location.search)
+        const value = params.get('restaurant')
+
+        readReviews(value)
     </script>
 </body>
 
