@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>My BCIT Project</title>
+    <meta name="comp1800 boilerplate code" content="my bcit project">
+    <meta name="author" content="BCIT">
+
+    <!-- Bootstrap for Mobile-first, and JQuery -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link href="./styles/blah.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Ranchers&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/common.css">
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
+
+    <!-- Optional styles and scripts of your own -->
+    <style>
+        form.example input[type=text] {
+            padding: 10px;
+            font-size: 17px;
+            border: 1px solid grey;
+            float: left;
+            width: 80%;
+            background: #f1f1f1;
+        }
+
+        form.example button {
+            float: left;
+            width: 20%;
+            padding: 10px;
+            background: #2196F3;
+            color: white;
+            font-size: 17px;
+            border: 1px solid grey;
+            border-left: none;
+            cursor: pointer;
+        }
+
+        form.example button:hover {
+            background: #0b7dda;
+        }
+
+        form.example::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+
+        form.example {
+            width: 80%;
+        }
+
+        .vegeteriancheck {
+            margin-right: 10px;
+            margin-left: 5px;
+        }
+
+        body {
+            margin-bottom: 10vh;
+        }
+
+
+        label {
+            font-family: 'Ranchers';
+            font-weight: lighter;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-------------------------------------->
+    <!-- The following is HTML for layout -->
+    <!-------------------------------------->
+    <!-- Header Navigation Bar -->
+    <div class="appname d-flex flex-row justify-content-center align-items-center sticky-top" style="height: 10vh;">
+        <div class="logo d-flex align-items-center">
+            <img class="logo" src="./logo_image/Dinosaur-icon.png">
+        </div>
+        <div class="d-flex">
+            <h1>dine-o</h1>
+        </div>
+    </div>
+
+
+    <div class="container" style="padding-bottom: 100px;">
+        <div class="mb-3">
+            <label for="restaurantName" class="form-label">Type restaurant name</label>
+            <input type="text" class="form-control" id="restaurantName" placeholder="restaurant name">
+        </div>
+        <br>
+        <form>
+
+            <div class="mb-3">
+                <label for="qualityReview" class="form-label">Review for food quality</label>
+                <textarea class="form-control" id="qualityReview" rows="4" style="width: 80%;"></textarea>
+            </div>
+            <br>
+            <br>
+            <div class="mb-3">
+                <label for="serviceReview" class="form-label">Review for service quality</label>
+                <textarea class="form-control" id="serviceReview" rows="4" style="width: 80%;"></textarea>
+            </div>
+            <br>
+            <div class="mb-3">
+                <label for="dishName" class="form-label">Review for an individual dish</label>
+                <input type="text" class="form-control" id="dishName" placeholder="dish name">
+                <textarea class="form-control" id="dishReview" rows="4" style="width: 80%;"></textarea>
+            </div>
+        </form>
+        <!-- <div class="d-flex flex-row justify-content-end align-self-center me-3 mb-3">
+            <input id="sButton" class="btn button" type="submit" value="SAVE" style="color: white;">
+        </div> -->
+        <div class="d-flex flex-row justify-content-end align-self-center me-3 mb-3">
+            <a href="#"><input id="sButton" class="btn button" type="submit" value="SAVE"
+                    style="color: white; font-size: large;"></a>
+        </div>
+        <div class="d-flex flex-row justify-content-end align-self-center me-3 mb-3">
+            <a href="landing_page_after_setting.html"><input class="btn button" type="submit" value="GO TO MAIN"
+                    style="color: white; font-size: large;"></a>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <!-- Bottom: Login, Home and Hangberger menu -->
+    <nav class="navbar navbar-expand fixed-bottom">
+        <div class="container-fluid">
+            <div class="btn-group dropdown">
+                <ul class="navbar-nav dropup">
+                    <li class="nav-item dropup">
+                        <a class="nav-link dropup-toggle" href="#" id="navbarDropup" role="button"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="bi bi-list" style="font-size: 3rem; color: rgb(43, 35, 35);"></i>
+                        </a>
+                        <div class="dropdown-menu dropup" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#"><b>Recommendations</b></a>
+                            <a class="dropdown-item" href="#"><b>Reviews</b></a>
+                            <a class="dropdown-item" href="#"><b>Settings</b></a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <button class="btn" href="#"><i class="bi bi-house-door-fill" style="font-size:3rem;"></i></button>
+            <button class="btn" href="#"><i class="bi bi-person-circle" style="font-size:3rem;"></i></button>
+        </div>
+    </nav>
+
+    <!----------------------------------------------->
+    <!-- JS: Boostrap, Firebase, API related    -->
+    <!----------------------------------------------->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
+        </script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
+    <script src="./scripts/firebase_api.js"></script>
+    <!--------------------------------------------------------------------->
+    <!-- JS files: Your own JavaScript functions included here    -->
+    <!--------------------------------------------------------------------->
+    <script>
+        function getFormInputs() {
+            document.getElementById("sButton").addEventListener('click', function () {
+                console.log("button clicked")
+
+                function writereviews() {
+                    let citiesRef = db.collection("reviews");
+                    var name = document.getElementById("restaurantName").value
+                    let quality = document.getElementById("qualityReview").value
+                    let service = document.getElementById("serviceReview").value
+                    let dishname = document.getElementById("dishName").value
+                    let dishreview = document.getElementById("dishReview").value
+
+                    citiesRef.add({
+                        name: name,
+                        qualityreview: quality,
+                        servicereview: service,
+                        dish_name: dishname,
+                        dish_review: dishreview
+                    });
+                }
+                writereviews()
+                // get various values from the form
+                // var name = document.getElementById("restaurantName").value;
+
+                // // Either true or false
+                // var quality = document.getElementById("qualityReview").checked;
+                // var service = document.getElementById("serviceReview").checked;
+
+                // let reviews = db.collection("reviews")
+                // reviews.add({
+                //     "name": name,   //from text field
+                //     "quality": quality,     //from checkbox
+                //     "service": service      //from checkbox
+                // }, { merge: true })
+                // .doc(user.uid)
+                // .collection("items")
+                // .add({
+                //     "name": name,   //from text field
+                //     "quality": quality,     //from checkbox
+                //     "service": service      //from checkbox
+                // })
+
+            })
+        }
+        getFormInputs();
+    </script>
+</body>
+
+</html>
