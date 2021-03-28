@@ -89,23 +89,16 @@
     <div class="preference_page" style="padding-bottom: 50px;">
         <div class="container-fluid">
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <input class="form-check-input" type="radio" name="FoodServiceQuality" id="FoodQuality">
                 <label class="form-check-label" for="flexRadioDefault1">
                     Food quality only
                 </label>
             </div>
             <div class="form-check">
 
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <input class="form-check-input" type="radio" name="FoodServiceQuality" id="ServiceQuality">
                 <label class="form-check-label" for="flexRadioDefault1">
                     Service quality only
-                </label>
-            </div>
-
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                <label class="form-check-label" for="flexRadioDefault1">
-                    Both
                 </label>
             </div>
         </div>
@@ -122,79 +115,79 @@
                 <label class="form-check-label" for="flexCheckDefault">
                     Chinese
                 </label>
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDisabled" disabled>
             </div>
             <div class="form-check me-3">
                 <label class="form-check-label" for="flexCheckDefault">
                     Thai
                 </label>
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" disabled>
             </div>
             <div class="form-check me-3">
                 <label class="form-check-label" for="flexCheckDefault">
                     Italian
                 </label>
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" disabled>
             </div>
             <div class="form-check me-3">
                 <label class="form-check-label" for="flexCheckDefault">
                     Janpanese
                 </label>
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" disabled>
             </div>
             <div class="form-check me-3">
                 <label class="form-check-label" for="flexCheckDefault">
                     Korean
                 </label>
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" disabled>
             </div>
             <div class="form-check me-3">
                 <label class="form-check-label" for="flexCheckDefault">
                     Polish
                 </label>
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" disabled>
             </div>
             <div class="form-check me-3">
                 <label class="form-check-label" for="flexCheckDefault">
                     Greek
                 </label>
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" disabled>
             </div>
             <div class="form-check me-3">
                 <label class="form-check-label" for="flexCheckDefault">
                     Mexican
                 </label>
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" disabled>
             </div>
             <div class="form-check me-3">
                 <label class="form-check-label" for="flexCheckDefault">
                     Ethiopian
                 </label>
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" disabled>
             </div>
             <div class="form-check me-3">
                 <label class="form-check-label" for="flexCheckDefault">
                     French
                 </label>
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" disabled>
             </div>
             <div class="form-check me-3">
                 <label class="form-check-label" for="flexCheckDefault">
                     Malaysian
                 </label>
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" disabled>
             </div>
             <div class="form-check me-3">
                 <label class="form-check-label" for="flexCheckDefault">
                     Brazilian
                 </label>
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" disabled>
             </div>
             <div class="form-check me-3">
                 <label class="form-check-label" for="flexCheckDefault">
                     American BBQ
                 </label>
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" disabled>
             </div>
         </div>
         <br>
@@ -205,7 +198,7 @@
                 <p class="d-inline"><b>Please check if you are vegeterain</b></p>
             </div>
             <div>
-                <input type="checkbox" id="vegeterain" name="vegeterain" value="true">
+                <input type="checkbox" id="vegeterain" name="vegeterain" value="true" disabled>
             </div>
         </div>
         <hr>
@@ -217,7 +210,7 @@
                 <p class="d-inline"><b>Please check if you are vegan</b></p>
             </div>
             <div>
-                <input type="checkbox" id="vegan" name="vegan" value="true">
+                <input type="checkbox" id="vegan" name="vegan" value="true" disabled>
             </div>
         </div>
         <hr>
@@ -228,7 +221,6 @@
             <a href="landing_page_after_setting.html"><input id="BacktoMain" class="btn button" type="submit" value="GO TO Main" style="color: white;"></a>
         </div>
     </div>
-
 
 
 
@@ -302,30 +294,15 @@
             // veganCheck = document.querySelector('input[name="vegan"]:checked').value;
             // console.log(veganCheck)
             //change!!
-        
-            if (document.querySelector('input[name="vegeterain"]').checked == true) {
-                vegeterain = document.querySelector('input[name="vegeterain"]').value;
-                console.log("vegeterainCheck:", vegeterain)
-            } else {
-                vegeterain = false
-                console.log("vegeterainCheck:", vegeterain)
-            }
-            if (document.querySelector('input[name="vegan"]').checked == true) {
-                vegan = document.querySelector('input[name="vegan"]').value;
-                console.log("veganCheck:", vegan)
-            } else {
-                vegan = false
-                console.log("veganCheck:", vegan)
-            }
+            
+            food_quality = document.querySelector('input[id="FoodQuality"]').checked        
+            service_quality = document.querySelector('input[id="ServiceQuality"]').checked
             var user = firebase.auth().currentUser;
             var uid = user.uid;
             db.collection("users").doc(user.uid).update({
-                "vegeterain": vegeterain
+                "food_quality": food_quality,
+                "service_quality": service_quality
             }, { merge: true })
-            db.collection("users").doc(user.uid).update({
-                "vegan": vegan
-            }, { merge: true })
-
         });
 
     </script>
