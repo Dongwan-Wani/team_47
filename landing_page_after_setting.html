@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="./styles/common.css">
     <link rel="stylesheet" href="./styles/landing_page.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Ranchers&display=swap" rel="stylesheet">
     <!-- Optional styles and scripts of your own -->
@@ -105,14 +107,15 @@
     <div class="container">
         <div class="d-flex justify-content-end">
             <div class=" button d-flex justify-content-end mt-2">
-                <a href="write_a_review.html"><button class="btn text-light fs-5 yellow-800" href="#">Write a review</button></a>
+                <a href="write_a_review.html"><button class="btn text-light fs-5 yellow-800" href="#">Write a
+                        review</button></a>
             </div>
         </div>
     </div>
 
     <div class="food_preference" style="padding-bottom: 100px;">
-        <div class="category mt-3 ms-5 d-flex flex-row flex-wrap justify-content-evenly">
-            
+        <div class="restaurant mt-3 ms-5 d-flex flex-row flex-wrap justify-content-evenly">
+
 
 
         </div>
@@ -131,15 +134,18 @@
                             <i class="bi bi-list" style="font-size: 3rem; color: rgb(43, 35, 35);"></i>
                         </a>
                         <div class="dropdown-menu dropup" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#"><i class="bi bi-hand-thumbs-up-fill"></i><b>  RECOMMENDATIONS</b></a>
-                            <a class="dropdown-item" href="#"><i class="bi bi-list-stars"></i><b>  REVIEWS</b></a>
-                            <a class="dropdown-item" href="user_preference.html"><b><i class="bi bi-gear"></i>  SETTINGS</b></a>
+                            <a class="dropdown-item" href="#"><i class="bi bi-hand-thumbs-up-fill"></i><b>
+                                    RECOMMENDATIONS</b></a>
+                            <a class="dropdown-item" href="#"><i class="bi bi-list-stars"></i><b> REVIEWS</b></a>
+                            <a class="dropdown-item" href="user_preference.html"><b><i class="bi bi-gear"></i>
+                                    SETTINGS</b></a>
                         </div>
                     </li>
                 </ul>
             </div>
             <button class="btn" href="#"><i class="bi bi-house-door-fill" style="font-size:3rem;"></i></button>
-            <a href="login.html"><button class="btn" href="#"><i class="bi bi-person-circle" style="font-size:3rem;"></i></button></a>
+            <a href="login.html"><button class="btn" href="#"><i class="bi bi-person-circle"
+                        style="font-size:3rem;"></i></button></a>
         </div>
     </nav>
 
@@ -162,36 +168,80 @@
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
     <script>
-        function add_category(name, pic) {
-            let category_name = document.createElement("div")
-            category_name.className = "img_div d-flex flex-column align-items-center me-5 mb-1"   
+        function add_restaurants(id, name, pic) {
+            //create a parent div
+            let restaurant_name = document.createElement("div")
+
+            //assign class to restaurant_name
+            restaurant_name.className = "img_div d-flex flex-column align-items-center me-5 mb-1"
+
+            //create an image div inside parent div  
             let img_div = document.createElement("div")
-            img_div.className = "food mb-2 pe-3 pt-1"
+            img_div.className = "food mb-2 pe-3 pt-1"  // set a class
+
             let image = document.createElement("img")
             image.setAttribute("src", pic)
             let a_link = document.createElement("a")
             a_link.setAttribute("href", "restaurants_page.html?category=" + name)
-            a_link.appendChild(image)  
+            a_link.appendChild(image)
             img_div.appendChild(a_link)
+
+            //create a div for restaurant name
             let text_div = document.createElement("div")
-            let para = document.createElement("h5")
-            text_div.appendChild(para)
-            para.innerText = name
-            category_name.appendChild(img_div)
-            category_name.appendChild(text_div)
-            document.getElementsByClassName("category")[0].appendChild(category_name)
+            let header = document.createElement("h5")
+            text_div.appendChild(header)
+            header.innerText = name
+
+            //create a like button
+            let like_div = document.createElement("div")
+
+            let like = document.createElement("h5")
+            let likeid = "thumb_like" + id
+            like.id = likeid
+            like.innerHTML = '<i class="far fa-thumbs-up thumbs" style="font-size:3rem"></i>'
+            like_div.appendChild(like)
+            addLikeListener(id, likeid)
+
+
+            //append child divs to parent div
+            restaurant_name.appendChild(img_div)
+            restaurant_name.appendChild(text_div)
+            restaurant_name.appendChild(like_div)
+            document.getElementsByClassName("restaurant")[0].appendChild(restaurant_name)
         }
 
-        function readCategories() {
-            db.collection("categories")
+        function readRestaurants() {
+            db.collection("restaurants")
                 .onSnapshot(function (query) {
-                    query.forEach(function (document){
-                        add_category(document.id, document.get("picture"))
+                    query.forEach(function (doc) {
+                        add_restaurants(doc.id, doc.data().name, doc.data().pictures)
                     })
-                    
+
                 })
         }
-        readCategories();
+        readRestaurants();
+
+
+        function addLikeListener(id, likeid) {
+            document.getElementById(likeid).addEventListener("click", function () {
+                console.log("like was click!")
+                db.collection("restaurants")
+                    .doc(id)
+                    .update({
+                        foodqualityscore: firebase.firestore.FieldValue.increment(1) //increments like!
+                    }).then(function () {
+                        db.collection("restaurants")
+                            .doc(id)
+                            .get()
+                            .then(function (doc) {
+                                console.log("incremented the like field!");
+
+                            })
+                    })
+
+            })
+        }
+
     </script>
 </body>
 
