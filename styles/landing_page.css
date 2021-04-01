@@ -14,5 +14,11 @@
             overflow: auto;
         }
 
+        .thumb:hover {
+            background-color: bisque;
+
+        }
+        
+
 
 
