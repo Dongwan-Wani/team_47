@@ -196,11 +196,11 @@
             let like_div = document.createElement("div")
 
             let like = document.createElement("h5")
-            let likeid = "thumb_like" + id
-            like.id = likeid
+            //let likeid = "thumb_like" + id
+            //like.id = likeid
             like.innerHTML = '<i class="far fa-thumbs-up thumbs" style="font-size:3rem"></i>'
             like_div.appendChild(like)
-            addLikeListener(id, likeid)
+            addLikeListener(id, like)
 
 
             //append child divs to parent div
@@ -222,8 +222,8 @@
         readRestaurants();
 
 
-        function addLikeListener(id, likeid) {
-            document.getElementById(likeid).addEventListener("click", function () {
+        function addLikeListener(id, like) {
+            like.addEventListener("click", function () {
                 console.log("like was click!")
                 db.collection("restaurants")
                     .doc(id)
