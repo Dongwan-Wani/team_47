@@ -137,7 +137,7 @@
                             <a class="dropdown-item" href="#"><i class="bi bi-hand-thumbs-up-fill"></i><b>
                                     RECOMMENDATIONS</b></a>
                             <a class="dropdown-item" href="#"><i class="bi bi-list-stars"></i><b> REVIEWS</b></a>
-                            <a class="dropdown-item" href="user_preference.html"><b><i class="bi bi-gear"></i>
+                            <a class="dropdown-item" href="user_preference_rev.html"><b><i class="bi bi-gear"></i>
                                     SETTINGS</b></a>
                         </div>
                     </li>
@@ -168,6 +168,7 @@
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
     <script>
+
         function add_restaurants(id, name, pic) {
             //create a parent div
             let restaurant_name = document.createElement("div")
@@ -195,11 +196,13 @@
             //create a like button
             let like_div = document.createElement("div")
 
+            //create a class to create hover effect in css
+            like_div.className = "thumb"
             let like = document.createElement("h5")
-            //let likeid = "thumb_like" + id
-            //like.id = likeid
             like.innerHTML = '<i class="far fa-thumbs-up thumbs" style="font-size:3rem"></i>'
             like_div.appendChild(like)
+
+            //attache event listener to thumb
             addLikeListener(id, like)
 
 
@@ -211,14 +214,39 @@
         }
 
         function readRestaurants() {
-            db.collection("restaurants")
-                .onSnapshot(function (query) {
-                    query.forEach(function (doc) {
-                        add_restaurants(doc.id, doc.data().name, doc.data().pictures)
+            firebase.auth().onAuthStateChanged(function (user) {
+                var user = firebase.auth().currentUser;
+                var uid = user.uid;
+                db.collection("users").doc(uid)
+                    .get().then(function (doc) {
+                        if (doc.data().food_quality) {
+                            db.collection("restaurants")
+                                .onSnapshot(function (query) {
+                                    query.forEach(function (doc) {
+                                        if (doc.data().foodqualityscore > doc.data().servicequalityscore) {
+                                            add_restaurants(doc.id, doc.data().name, doc.data().pictures)
+                                        }
+                                    })
+                                })
+
+                        } else {
+                            db.collection("restaurants")
+                                .onSnapshot(function (query) {
+                                    query.forEach(function (doc) {
+                                        if (doc.data().foodqualityscore < doc.data().servicequalityscore) {
+                                            add_restaurants(doc.id, doc.data().name, doc.data().pictures)
+                                        }
+                                    })
+                                })
+                        }
+
+
                     })
 
-                })
+            })
         }
+
+
         readRestaurants();
 
 
@@ -241,6 +269,7 @@
 
             })
         }
+
 
     </script>
 </body>
