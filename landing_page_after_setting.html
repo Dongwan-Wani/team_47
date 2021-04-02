@@ -169,6 +169,46 @@
     <!--------------------------------------------------------------------->
     <script>
 
+
+
+        function readRestaurants() {
+            firebase.auth().onAuthStateChanged(function (user) {
+                var user = firebase.auth().currentUser;
+                var uid = user.uid;
+                db.collection("users").doc(uid)
+                    .get().then(function (doc) {
+                        if (doc.data().food_quality) {
+                            db.collection("restaurants")
+                                .get()
+                                .then(function (query) {
+                                    query.forEach(function (doc) {
+                                        if (doc.data().foodqualityscore >= doc.data().servicequalityscore) {
+                                            add_restaurants(doc.id, doc.data().name, doc.data().pictures)
+                                        }
+                                    })
+                                })
+
+                        } else {
+                            db.collection("restaurants")
+                                .get()
+                                .then(function (query) {
+                                    query.forEach(function (doc) {
+                                        if (doc.data().foodqualityscore < doc.data().servicequalityscore) {
+                                            add_restaurants(doc.id, doc.data().name, doc.data().pictures)
+                                        }
+                                    })
+                                })
+                        }
+
+
+                    })
+
+            })
+        }
+
+
+        readRestaurants();
+
         function add_restaurants(id, name, pic) {
             //create a parent div
             let restaurant_name = document.createElement("div")
@@ -202,71 +242,38 @@
             like.innerHTML = '<i class="far fa-thumbs-up thumbs" style="font-size:3rem"></i>'
             like_div.appendChild(like)
 
+            let number_p = document.createElement("p")
+            like_div.appendChild(number_p)
+
             //attache event listener to thumb
-            addLikeListener(id, like)
+            addLikeListener(id, like, number_p)
 
 
             //append child divs to parent div
             restaurant_name.appendChild(img_div)
             restaurant_name.appendChild(text_div)
             restaurant_name.appendChild(like_div)
+        
             document.getElementsByClassName("restaurant")[0].appendChild(restaurant_name)
         }
 
-        function readRestaurants() {
+        function addLikeListener(id, like, number_p) {
             firebase.auth().onAuthStateChanged(function (user) {
-                var user = firebase.auth().currentUser;
-                var uid = user.uid;
-                db.collection("users").doc(uid)
-                    .get().then(function (doc) {
-                        if (doc.data().food_quality) {
-                            db.collection("restaurants")
-                                .onSnapshot(function (query) {
-                                    query.forEach(function (doc) {
-                                        if (doc.data().foodqualityscore > doc.data().servicequalityscore) {
-                                            add_restaurants(doc.id, doc.data().name, doc.data().pictures)
-                                        }
-                                    })
-                                })
+                like.addEventListener("click", function () {
+                    console.log("like was click!")
+                    db.collection("restaurants")
+                        .doc(id)
+                        .update({
+                            foodqualityscore: firebase.firestore.FieldValue.increment(1) //increments like!
+                        })
 
-                        } else {
-                            db.collection("restaurants")
-                                .onSnapshot(function (query) {
-                                    query.forEach(function (doc) {
-                                        if (doc.data().foodqualityscore < doc.data().servicequalityscore) {
-                                            add_restaurants(doc.id, doc.data().name, doc.data().pictures)
-                                        }
-                                    })
-                                })
-                        }
-
-
-                    })
-
+                })
             })
-        }
 
-
-        readRestaurants();
-
-
-        function addLikeListener(id, like) {
-            like.addEventListener("click", function () {
-                console.log("like was click!")
-                db.collection("restaurants")
-                    .doc(id)
-                    .update({
-                        foodqualityscore: firebase.firestore.FieldValue.increment(1) //increments like!
-                    }).then(function () {
-                        db.collection("restaurants")
-                            .doc(id)
-                            .get()
-                            .then(function (doc) {
-                                console.log("incremented the like field!");
-
-                            })
-                    })
-
+            db.collection("restaurants")
+            .doc(id)
+            .onSnapshot(function(snap){
+                number_p.innerText=snap.get("foodqualityscore")
             })
         }
 
