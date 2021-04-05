@@ -70,6 +70,10 @@
             letter-spacing: 2px;
         }
 
+        #care {
+            color: #929398;
+        }
+
         input[type='radio'] {
             display: inline-block;
             text-align: center;
@@ -84,6 +88,15 @@
             background-color: red;
             background: './logo_image/Dinosaur-icon.png';
         }
+
+        .selection {
+            background-color: whitesmoke; opacity: 0.9;
+        }
+
+        .option {
+            color: #84ad52;
+        }
+        
     </style>
 
 </head>
@@ -107,8 +120,7 @@
         <div class="todayhead text-center">
             <h2><b>PREFERECE SETTING</b></h2>
             <br>
-            <br>
-            <h2>What do you care about the most ?</h2>
+            <h2 id ='care'>What do you care about the most ?</h2>
         </div>
         <br>
         <div class="container">
@@ -118,8 +130,8 @@
                 <div class="col-6">
                     <div class="card shadow-sm">
                         <img src="./images/food_quality.jpg" class="foodPicture img-fluid" alt="food">
-                        <div class="card-body text-center">
-                            <h2>Food Quality</h2>
+                        <div class="card-body text-center selection">
+                            <h2 class='option'>Food Quality</h2>
                             <div class="radio">
                                 <input class="radio" type="radio" name="FoodServiceQuality" id="FoodQuality">
                             </div>
@@ -131,8 +143,8 @@
                 <div class="col-6">
                     <div class="card shadow-sm">
                         <img src="./images/service.jpg" class="foodPicture img-fluid" alt="food">
-                        <div class="card-body text-center">
-                            <h2>Service Quality</h2>
+                        <div class="card-body text-center selection">
+                            <h2 class='option'>Service Quality</h2>
                             <div class="radio">
                                 <input class="radio" type="radio" name="FoodServiceQuality" id="ServiceQuality">
                             </div>
@@ -147,7 +159,7 @@
             <a href="#"><input id="sButton" class="btn button me-2" type="submit" value="SAVE"
                     style="color: white;"></a>
             <a href="landing_page_after_setting.html"><input id="BacktoMain" class="btn button" type="submit"
-                    value="GO TO Main" style="color: white;"></a>
+                    value="GO TO MAIN" style="color: white;"></a>
         </div>
     </div>
 
@@ -165,10 +177,10 @@
                             <i class="bi bi-list" style="font-size: 3rem; color: rgb(43, 35, 35);"></i>
                         </a>
                         <div class="dropdown-menu dropup" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#"><i class="bi bi-hand-thumbs-up-fill"></i><b>
+                            <a class="dropdown-item" href="recommendations.html"><i class="bi bi-hand-thumbs-up-fill"></i><b>
                                     RECOMMENDATIONS</b></a>
                             <a class="dropdown-item" href="#"><i class="bi bi-list-stars"></i><b> REVIEWS</b></a>
-                            <a class="dropdown-item" href="user_preference.html"><b><i class="bi bi-gear"></i>
+                            <a class="dropdown-item" href="user_preference_rev.html"><b><i class="bi bi-gear"></i>
                                     SETTINGS</b></a>
                         </div>
                     </li>
@@ -176,7 +188,7 @@
             </div>
 
 
-            <button class="btn" href="#"><i class="bi bi-house-door-fill" style="font-size:3rem;"></i></button>
+            <a href="landing_page_after_setting.html"><button class="btn"><i class="bi bi-house-door-fill" style="font-size:3rem;"></i></button></a>
 
 
 

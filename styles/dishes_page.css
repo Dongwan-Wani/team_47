@@ -1,0 +1,41 @@
+
+h5 {
+    font:bold;
+}
+
+img {
+    height: 150px;
+    width: 200px;
+    padding-left: 15px;
+}
+
+.img_div {
+    border-width:2px;  
+    border-style:solid ;
+    border-color: bisque;
+    border-radius: 5%;
+    background-color: rgb(241, 235, 226);
+    overflow: auto;
+}
+
+.thumb:hover {
+    background-color: bisque;
+
+}
+
+h1 {
+    font-size: 5vh;
+}
+
+.foodPicture {
+    height: 250px;
+}
+
+.todayhead {
+    color: #84ad52;
+}
+
+.restaurantButton {
+    background-color: #84ad52;
+    color: white;
+}

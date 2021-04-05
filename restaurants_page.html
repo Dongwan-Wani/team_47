@@ -11,11 +11,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    <link href="./styles/blah.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="./styles/common.css">
-    <link rel="stylesheet" href="./styles/restaurants_page.css">
+    <link rel="stylesheet" href="./styles/dishes_page.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
     <link href="https://fonts.googleapis.com/css2?family=Ranchers&display=swap" rel="stylesheet">
     <!-- Optional styles and scripts of your own -->
     <style>
@@ -76,6 +76,33 @@
         .body {
             margin-bottom: 60px;
         }
+
+        .img_div {
+            overflow: auto;
+        }
+
+        .foodPicture {
+            all: initial;
+        }
+
+        .heading {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .modal-title {
+            color: #84ad52;
+        }
+
+        .modal-body {
+            text-align: center;
+        }
+
+        .parkinginfo {
+            all: initial;
+            width: 65vw;
+            display: block;
+        }
     </style>
 
 </head>
@@ -102,21 +129,84 @@
     </div>
 
 
-    <div class="container">
-        <div class="d-flex justify-content-end">
-            <div class="button d-flex justify-content-end mt-2">
-                <a href="write_a_review.html"><button class="btn text-light fs-5 yellow-800" href="#">Write a review</button></a>
+    <div class="album py-5 bg-light">
+        <div class="todayhead text-center">
+            <h4 id='name-goes-here'></h4>
+        </div>
+        <div class="container">
+            <div class="heading row row-cols-1 row-cols-sm-1 row-cols-md-1 g-3">
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img id="resPicture" src="./images/food2.PNG" class="foodPicture img-fluid" alt="food">
+                        <div class="card-body text-center">
+                            <p id="info-goes-here" class="card-text"></p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group text-center">
+                                    <!-- <button type="button" class="btn btn-sm btn-outline-secondary data-toggle="modal"
+                                    data-target="#myModal"><i class="bi bi-info-circle-fill"></i>
+                                        Parking</button> -->
+                                    <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal"
+                                        data-target="#myModal"><i class="bi bi-info-circle-fill"></i>
+                                        Parking</button></button>
+                                    <!-- Trigger the modal with a button -->
+
+                                    <!-- Modal -->
+                                    <div id="myModal" class="modal fade" role="dialog">
+                                        <div class="modal-dialog modal-lg">
+
+                                            <!-- Modal content-->
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title">Parking Information</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="container-fluid no-padding">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <img class="parkinginfo img-responsive"
+                                                                    src="./images/parking/haru.PNG" alt="parkng info">
+                                                                <!-- <img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=1300%C3%97400&w=1300&h=400" alt="placeholder 960" class="img-responsive" /> -->
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- <img src="./images/food2.PNG" class="foodPicture img-fluid" alt="food"> -->
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <!-- Modal -->
+                                    <button type="button" class="btn btn-sm btn-outline-secondary" disabled><i
+                                            class="bi bi-telephone-fill"></i> Contact</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary" disabled><i
+                                            class="bi bi-geo-alt-fill"></i> Directions</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary" disabled><i
+                                            class="bi bi-calendar-plus"></i> Reservation</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="food_preference" style="padding-bottom: 100px;">
-        <div class="food_review mt-3 ms-5 d-flex flex-row flex-wrap">
-           
+
+        <div class="todayhead text-center">
+            <br>
+            <h4><b>Menu</b></h4>
         </div>
+        <div class="food_preference" style="padding-bottom: 100px;">
+            <div class="restaurant mt-3 ms-5 d-flex flex-row flex-wrap justify-content-evenly">
 
+            </div>
+
+        </div>
     </div>
-
 
     <!-- Bottom: Login, Home and Hangberger menu -->
     <nav class="navbar navbar-expand fixed-bottom">
@@ -126,18 +216,21 @@
                     <li class="nav-item dropup">
                         <a class="nav-link dropup-toggle" href="#" id="navbarDropup" role="button"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="bi bi-list" style="font-size: 5rem; color: rgb(43, 35, 35);"></i>
+                            <i class="bi bi-list" style="font-size: 3rem; color: rgb(43, 35, 35);"></i>
                         </a>
                         <div class="dropdown-menu dropup" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#"><i class="bi bi-hand-thumbs-up-fill"></i><b>  RECOMMENDATIONS</b></a>
-                            <a class="dropdown-item" href="#"><i class="bi bi-list-stars"></i><b>  REVIEWS</b></a>
-                            <a class="dropdown-item" href="user_preference.html"><b><i class="bi bi-gear"></i> SETTINGS</b></a>
+                            <a class="dropdown-item" href="#"><i class="bi bi-hand-thumbs-up-fill"></i><b>
+                                    RECOMMENDATIONS</b></a>
+                            <a class="dropdown-item" href="#"><i class="bi bi-list-stars"></i><b> REVIEWS</b></a>
+                            <a class="dropdown-item" href="user_preference_rev.html"><b><i class="bi bi-gear"></i>
+                                    SETTINGS</b></a>
                         </div>
                     </li>
                 </ul>
             </div>
-            <button class="btn" href="#"><i class="bi bi-house-door-fill" style="font-size:5rem;"></i></button>
-            <a href="login.html"><button class="btn" href="#"><i class="bi bi-person-circle" style="font-size:3rem;"></i></button></a>
+            <button class="btn" href="#"><i class="bi bi-house-door-fill" style="font-size:3rem;"></i></button>
+            <a href="login.html"><button class="btn" href="#"><i class="bi bi-person-circle"
+                        style="font-size:3rem;"></i></button></a>
         </div>
     </nav>
 
@@ -151,6 +244,17 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
         </script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
     <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
@@ -161,48 +265,128 @@
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
     <script>
-        function add_restaurant(id, name, img, review_title ) {
-            let image_div = document.createElement("div")
-            image_div.className = "img_div d-flex flex-row align-items-center me-5 mb-5"
-            let image_source_div = document.createElement("div")
-            let a_tag = document.createElement('a')
-            a_tag.setAttribute("href", "./individual_restaurant_food_review.html?restaurant=" + id)
-            image_source_div.className = "review_individual_restaurant mb-2 pe-3 pt-1"
-            let image = document.createElement("img")
-            image.setAttribute("src", img)
-            a_tag.appendChild(image)
-            image_source_div.appendChild(a_tag)
-            let review_text = document.createElement("div")
-            let title = document.createElement("h5")
-            title.innerText = name
-            review_text.appendChild(title)
-            let review_header = document.createElement("h6")
-            review_header.innerText = "Food quality"
-            review_text.appendChild(review_header)
-            let review_description = document.createElement("p")
-            review_description.innerText = "I personally think this is probably the best Chinese food in town. The pickled pepper fish head can't be more authentic. Also, the pepper fried egg dish brings my childhood memories back!" 
-            review_text.appendChild(review_description)
-            image_div.appendChild(image_source_div)
-            image_div.appendChild(review_text)
-            document.getElementsByClassName("food_review")[0].appendChild(image_div)
-        }
-        //add_restaurant("Dynasty", "./images/chinese_category.jpg", "Food quality" )
+        const params = new URLSearchParams(window.location.search)
+        const restaurant_name = params.get('category')
 
-        function readrestaurants(category) {
-            let reference = db.collection("categories").doc(category)
-            db.collection("restaurants").where("category", "==", reference)
-            .onSnapshot(function (query) {
-                query.forEach(function (document) {
-                    add_restaurant(document.id, document.get("name"), document.get("pictures"), "Food quality")
+        function add_dishes(id, name, pic) {
+            //create a parent div
+            let dish_name = document.createElement("div")
+
+            //assign class to restaurant_name
+            dish_name.className = "img_div d-flex flex-column align-items-center me-5 mb-1"
+
+            //create an image div inside parent div  
+            let img_div = document.createElement("div")
+            img_div.className = "food mb-2 pe-3 pt-1"  // set a class
+
+            let image = document.createElement("img")
+            image.setAttribute("src", pic)
+            let a_link = document.createElement("a")
+            a_link.setAttribute("href", "#")
+            a_link.appendChild(image)
+            img_div.appendChild(a_link)
+
+            //create a div for Dish name
+            let text_div = document.createElement("div")
+            let header = document.createElement("h5")
+            text_div.appendChild(header)
+            header.innerText = name
+
+            //create a like button
+            let like_div = document.createElement("div")
+
+            //create a class to create hover effect in css
+            like_div.className = "thumb"
+            let like = document.createElement("h5")
+            like.innerHTML = '<i class="far fa-thumbs-up thumbs" style="font-size:3rem"></i>'
+            like_div.appendChild(like)
+
+            let number_p = document.createElement("p")
+            like_div.appendChild(number_p)
+
+            //attache event listener to thumb
+            addLikeListener(id, like, number_p)
+
+
+            //append child divs to parent div
+            dish_name.appendChild(img_div)
+            dish_name.appendChild(text_div)
+            dish_name.appendChild(like_div)
+
+            document.getElementsByClassName("restaurant")[0].appendChild(dish_name)
+        }
+
+
+
+        function readrestaurants(restaurant_name) {
+            // let reference = db.collection("categories").doc(category)
+            db.collection("dishes").where("restaurant", "==", restaurant_name)
+                .onSnapshot(function (query) {
+                    readRestaurantInfo(restaurant_name)
+                    query.forEach(function (document) {
+                        // add_restaurant(document.id, document.get("name"), document.get("pictures"), "Food quality")
+                        console.log(document.id, document.get("dish_name"), document.get("restaurant"))
+                        add_dishes(document.id, document.get("dish_name"), document.get("images"))
+                    })
+                })
+        }
+
+        function readRestaurantInfo(restaurant_name) {
+            db.collection("restaurants").where("name", "==", restaurant_name)
+                .get()
+                .then(function (snap) {
+                    snap.forEach(function (doc) {
+                        var name = doc.data().name;
+                        var info = doc.data().info;
+                        var picture = doc.data().pictures;
+                        $("#name-goes-here").text(name);
+                        $("#info-goes-here").text(info);
+                        $("#resPicture").attr("src", picture);
+
+                        console.log(name)
+                        console.log(info)
+                        console.log(picture)
+
+
+                    })
+                })
+        }
+
+        function addLikeListener(id, like, number_p) {
+            firebase.auth().onAuthStateChanged(function (user) {
+                like.addEventListener("click", function () {
+                    console.log("like was click!")
+                    db.collection("dishes")
+                        .doc(id)
+                        .update({
+                            foodqualityscore: firebase.firestore.FieldValue.increment(1) //increments like!
+                        })
+
                 })
             })
+
+            db.collection("dishes")
+                .doc(id)
+                .onSnapshot(function (snap) {
+                    number_p.innerText = snap.get("foodqualityscore")
+                })
         }
 
-        
-        const params = new URLSearchParams(window.location.search)
-        const value = params.get('category')
+        function writeDishes() {
+            var DishesRef = db.collection("dishes");
+            // Bibimbap
+            // Tteok-bokki
+            DishesRef.add({
+                dish_name: "Tteok-bokki",
+                images: "./imges/dishes/food1.PNG",
+                restaurant: "Haru",
+                foodqualityscore: 0
+            });
 
-        readrestaurants(value)
+        }
+
+        console.log(restaurant_name);
+        readrestaurants(restaurant_name);
     </script>
 </body>
 
