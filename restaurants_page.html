@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="./styles/common.css">
     <link rel="stylesheet" href="./styles/restaurants_page.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
     <link href="https://fonts.googleapis.com/css2?family=Ranchers&display=swap" rel="stylesheet">
     <!-- Optional styles and scripts of your own -->
     <style>
@@ -75,6 +76,26 @@
         .body {
             margin-bottom: 60px;
         }
+        img {
+            height: 150px;
+            width: 200px;
+            border-radius: 50%;
+            padding-left: 15px;
+        }
+
+        .img_div {
+            border-width:2px;  
+            border-style:solid ;
+            border-color: bisque;
+            border-radius: 5%;
+            background-color: rgb(241, 235, 226);
+            overflow: auto;
+        }
+
+        .thumb:hover {
+            background-color: bisque;
+
+        }
     </style>
 
 </head>
@@ -104,15 +125,16 @@
     <div class="container">
         <div class="d-flex justify-content-end">
             <div class="button d-flex justify-content-end mt-2">
-                <a href="write_a_review.html"><button class="btn text-light fs-5 yellow-800" href="#">Write a review</button></a>
+                <a href="write_a_review.html"><button class="btn text-light fs-5 yellow-800" href="#">Write a
+                        review</button></a>
             </div>
         </div>
     </div>
 
     <div class="food_preference" style="padding-bottom: 100px;">
-        <div class="food_review mt-3 ms-5 d-flex flex-row flex-wrap">
-           
-    </div>
+        <div class="restaurant mt-3 ms-5 d-flex flex-row flex-wrap justify-content-evenly">
+
+        </div>
 
     </div>
 
@@ -128,15 +150,18 @@
                             <i class="bi bi-list" style="font-size: 5rem; color: rgb(43, 35, 35);"></i>
                         </a>
                         <div class="dropdown-menu dropup" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#"><i class="bi bi-hand-thumbs-up-fill"></i><b>  RECOMMENDATIONS</b></a>
-                            <a class="dropdown-item" href="#"><i class="bi bi-list-stars"></i><b>  REVIEWS</b></a>
-                            <a class="dropdown-item" href="user_preference.html"><b><i class="bi bi-gear"></i> SETTINGS</b></a>
+                            <a class="dropdown-item" href="#"><i class="bi bi-hand-thumbs-up-fill"></i><b>
+                                    RECOMMENDATIONS</b></a>
+                            <a class="dropdown-item" href="#"><i class="bi bi-list-stars"></i><b> REVIEWS</b></a>
+                            <a class="dropdown-item" href="user_preference.html"><b><i class="bi bi-gear"></i>
+                                    SETTINGS</b></a>
                         </div>
                     </li>
                 </ul>
             </div>
             <button class="btn" href="#"><i class="bi bi-house-door-fill" style="font-size:5rem;"></i></button>
-            <a href="login.html"><button class="btn" href="#"><i class="bi bi-person-circle" style="font-size:3rem;"></i></button></a>
+            <a href="login.html"><button class="btn" href="#"><i class="bi bi-person-circle"
+                        style="font-size:3rem;"></i></button></a>
         </div>
     </nav>
 
@@ -160,7 +185,73 @@
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
     <script>
-        
+        function add_dishes(id, name, pic) {
+            //create a parent div
+            let dish_name = document.createElement("div")
+
+            //assign class to restaurant_name
+            dish_name.className = "img_div d-flex flex-column align-items-center me-5 mb-1"
+
+            //create an image div inside parent div  
+            let img_div = document.createElement("div")
+            img_div.className = "food mb-2 pe-3 pt-1"  // set a class
+
+            let image = document.createElement("img")
+            image.setAttribute("src", pic)
+            let a_link = document.createElement("a")
+            a_link.setAttribute("href", "#")
+            a_link.appendChild(image)
+            img_div.appendChild(a_link)
+
+            //create a div for Dish name
+            let text_div = document.createElement("div")
+            let header = document.createElement("h5")
+            text_div.appendChild(header)
+            header.innerText = name
+
+            //create a like button
+            let like_div = document.createElement("div")
+
+            //create a class to create hover effect in css
+            like_div.className = "thumb"
+            let like = document.createElement("h5")
+            like.innerHTML = '<i class="far fa-thumbs-up thumbs" style="font-size:3rem"></i>'
+            like_div.appendChild(like)
+
+            let number_p = document.createElement("p")
+            like_div.appendChild(number_p)
+
+            //attache event listener to thumb
+            addLikeListener(id, like, number_p)
+
+
+            //append child divs to parent div
+            dish_name.appendChild(img_div)
+            dish_name.appendChild(text_div)
+            dish_name.appendChild(like_div)
+
+            document.getElementsByClassName("restaurant")[0].appendChild(dish_name)
+        }
+
+        function addLikeListener(id, like, number_p) {
+            firebase.auth().onAuthStateChanged(function (user) {
+                like.addEventListener("click", function () {
+                    console.log("like was click!")
+                    db.collection("dishes")
+                        .doc(id)
+                        .update({
+                            foodqualityscore: firebase.firestore.FieldValue.increment(1) //increments like!
+                        })
+
+                })
+            })
+
+            db.collection("dishes")
+                .doc(id)
+                .onSnapshot(function (snap) {
+                    number_p.innerText = snap.get("foodqualityscore")
+                })
+        }
 
         // function add_restaurant(id, name, img, review_title ) {
         //     let image_div = document.createElement("div")
@@ -192,21 +283,22 @@
         function readrestaurants(restaurant_name) {
             // let reference = db.collection("categories").doc(category)
             db.collection("dishes").where("restaurant", "==", restaurant_name)
-            .onSnapshot(function (query) {
-                query.forEach(function (document) {
-                    // add_restaurant(document.id, document.get("name"), document.get("pictures"), "Food quality")
-                    console.log(document.id, document.get("dish_name"), document.get("restaurant"))
-
+                .onSnapshot(function (query) {
+                    query.forEach(function (document) {
+                        // add_restaurant(document.id, document.get("name"), document.get("pictures"), "Food quality")
+                        console.log(document.id, document.get("dish_name"), document.get("restaurant"))
+                        add_dishes(document.id, document.get("dish_name"), document.get("images"))
+                    })
                 })
-            })
         }
 
         function writeDishes() {
             var DishesRef = db.collection("dishes");
-
+            // Bibimbap
+            // Tteok-bokki
             DishesRef.add({
-                dish_name: "Gamja-tang",
-                img: "/team47/img/america",
+                dish_name: "Tteok-bokki",
+                images: "./imges/dishes/food1.PNG",
                 restaurant: "Haru",
                 foodqualityscore: 0
             });
@@ -215,7 +307,7 @@
         // /restaurants_page.html?category=Haru
 
 
-        
+
         const params = new URLSearchParams(window.location.search)
         const value = params.get('category')
         console.log(value);
