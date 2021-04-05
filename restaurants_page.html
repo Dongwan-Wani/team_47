@@ -11,7 +11,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    <link href="./styles/blah.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="./styles/common.css">
     <link rel="stylesheet" href="./styles/restaurants_page.css">
@@ -113,7 +112,7 @@
     <div class="food_preference" style="padding-bottom: 100px;">
         <div class="food_review mt-3 ms-5 d-flex flex-row flex-wrap">
            
-        </div>
+    </div>
 
     </div>
 
@@ -188,21 +187,36 @@
         }
         //add_restaurant("Dynasty", "./images/chinese_category.jpg", "Food quality" )
 
-        function readrestaurants(category) {
-            let reference = db.collection("categories").doc(category)
-            db.collection("restaurants").where("category", "==", reference)
+        function readrestaurants(restaurant_name) {
+            // let reference = db.collection("categories").doc(category)
+            db.collection("dishes").where("restaurant", "==", restaurant_name)
             .onSnapshot(function (query) {
                 query.forEach(function (document) {
-                    add_restaurant(document.id, document.get("name"), document.get("pictures"), "Food quality")
+                    // add_restaurant(document.id, document.get("name"), document.get("pictures"), "Food quality")
+                    console.log(document.id, document.get("dish_name"), document.get("restaurant") )
                 })
             })
         }
 
+        function writeDishes() {
+            var DishesRef = db.collection("dishes");
+
+            DishesRef.add({
+                dish_name: "Gamja-tang",
+                img: "/team47/img/america",
+                restaurant: "Haru",
+                foodqualityscore: 0
+            });
+
+        }
+        // /restaurants_page.html?category=Haru
+
+
         
         const params = new URLSearchParams(window.location.search)
         const value = params.get('category')
-
-        readrestaurants(value)
+        console.log(value);
+        readrestaurants(value);
     </script>
 </body>
 
