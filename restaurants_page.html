@@ -80,6 +80,14 @@
         .img_div {
             overflow: auto;
         }
+
+        .foodPicture {
+            all: initial;
+        }
+        .heading {
+            width: 80%;
+            margin: 0 auto;
+        }
     </style>
 
 </head>
@@ -118,10 +126,9 @@
     <div class="album py-5 bg-light">
         <div class="todayhead text-center">
             <h4><b>Today's Recommendations</b></h4>
-            <br>
         </div>
         <div class="container">
-            <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 g-3">
+            <div class="heading row row-cols-1 row-cols-sm-1 row-cols-md-1 g-3">
                 <div class="col">
                     <div class="card shadow-sm">
                         <img src="./images/food2.PNG" class="foodPicture img-fluid" alt="food">
@@ -130,10 +137,14 @@
                                 additional content. This content is a little bit longer.</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group text-center">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Parking Information</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary" disabled>Contact</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary" disabled>Get Directions</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary" disabled><i class="bi bi-calendar-plus"></i> Reservation</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><i
+                                            class="bi bi-info-circle-fill"></i> Parking Information</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary" disabled><i
+                                            class="bi bi-telephone-fill"></i> Contact</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary" disabled><i
+                                            class="bi bi-geo-alt-fill"></i> Get Directions</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary" disabled><i
+                                            class="bi bi-calendar-plus"></i> Reservation</button>
                                 </div>
                             </div>
                         </div>
@@ -141,15 +152,18 @@
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="food_preference" style="padding-bottom: 100px;">
-        <div class="restaurant mt-3 ms-5 d-flex flex-row flex-wrap justify-content-evenly">
+        <div class="todayhead text-center">
+            <br>
+            <h4><b>Menu</b></h4>
+        </div>
+        <div class="food_preference" style="padding-bottom: 100px;">
+            <div class="restaurant mt-3 ms-5 d-flex flex-row flex-wrap justify-content-evenly">
+
+            </div>
 
         </div>
-
     </div>
-
 
     <!-- Bottom: Login, Home and Hangberger menu -->
     <nav class="navbar navbar-expand fixed-bottom">
