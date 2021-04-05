@@ -321,7 +321,8 @@
         function readrestaurants(restaurant_name) {
             // let reference = db.collection("categories").doc(category)
             db.collection("dishes").where("restaurant", "==", restaurant_name)
-                .onSnapshot(function (query) {
+                .get()
+                .then(function (query) {
                     readRestaurantInfo(restaurant_name)
                     query.forEach(function (document) {
                         // add_restaurant(document.id, document.get("name"), document.get("pictures"), "Food quality")
