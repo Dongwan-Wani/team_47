@@ -130,12 +130,11 @@
                     <div class="card shadow-sm">
                         <img src="./images/food1.PNG" class="foodPicture img-fluid" alt="food">
                         <div class="card-body text-center">
+                            <h4 id="first-dish-name-goes-here">name</h4>
                             <a href="#" class="btn restaurantButton  my-1">Restaurant 1</a>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer.</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Location</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Likes</button>
                                     <button type="button" class="btn btn-sm btn-outline-secondary">Reviews</button>
                                 </div>
                             </div>
@@ -147,6 +146,7 @@
                     <div class="card shadow-sm">
                         <img src="./images/food2.PNG" class="foodPicture img-fluid" alt="food">
                         <div class="card-body text-center">
+                            <h4 id="second-dish-name-goes-here">name</h4>
                             <a href="#" class="btn restaurantButton my-1">Restaurant 2</a>
                             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
                                 additional content. This content is a little bit longer.</p>
@@ -164,6 +164,7 @@
                     <div class="card shadow-sm">
                         <img src="./images/food3.PNG" class="foodPicture img-fluid" alt="food">
                         <div class="card-body text-center">
+                            <h4 id="thrid-dish-name-goes-here">name</h4>
                             <a href="#" class="btn restaurantButton  my-1">Restaurant 3</a>
                             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
                                 additional content. This content is a little bit longer.</p>
@@ -243,28 +244,40 @@
                         top_three.push(dish)
                         //document.getElementById("cities-go-here").innerHTML = newdom;
                     })
+                    readdishInfo(top_three[0], 'first')
+                    readdishInfo(top_three[1], 'second')
+                    readdishInfo(top_three[2], 'third')
                 })
             console.log(top_three)
+
         }
 
 
-        function readdishInfo(restaurant_name) {
-            db.collection("restaurants").where("name", "==", restaurant_name)
+        function readdishInfo(dish_name, rank) {
+            db.collection("dishes").where("dish_name", "==", dish_name)
                 .get()
                 .then(function (snap) {
                     snap.forEach(function (doc) {
-                        var name = doc.data().name;
-                        var info = doc.data().info;
-                        var picture = doc.data().pictures;
-                        $("#name-goes-here").text(name);
-                        $("#info-goes-here").text(info);
-                        $("#resPicture").attr("src", picture);
-                        
-                        console.log(name)
-                        console.log(info)
+                        var dish_name = doc.data().dish_name;
+                        var restaurant = doc.data().restaurant;
+                        var likes = doc.data().foodqualityscore;
+                        var picture = doc.data().images;
+                        let dish_element = `#${rank}-dish-name-goes-here`
+                        let rest_element = `#${rank}-restaurant-name-goes-here`
+                        let like_element = `#${rank}-likes`
+                        let pic_element = `#${rank}-dishPicture`
+
+                        $(dish_element).text(dish_name);
+                        $(rest_element).text(restaurant);
+                        $(like_element).text(likes);
+                        $(pic_element).attr("src", picture);
+
+                        console.log(dish_name)
+                        console.log(restaurant)
+                        console.log(likes)
                         console.log(picture)
-
-
+                        console.log(rank)
+                        console.log(dish_element)
                     })
                 })
         }
