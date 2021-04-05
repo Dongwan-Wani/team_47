@@ -225,7 +225,55 @@
     <!--------------------------------------------------------------------->
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
-    
+    <script>
+        function dishQuery() {
+            top_three = []
+            db.collection("dishes")
+                //.where("population", ">", 1000000)
+                //.where("hemisphere", "==", "south")
+                //.limit(2)
+                //.orderBy("population")
+                .orderBy("foodqualityscore", "desc").limit(3)
+                .get()
+                .then(function (snap) {
+                    // console.log(snap)
+                    snap.forEach(function (doc) {
+                        var dish = doc.data().dish_name;
+                        console.log(dish);
+                        top_three.push(dish)
+                        //document.getElementById("cities-go-here").innerHTML = newdom;
+                    })
+                })
+            console.log(top_three)
+        }
+
+
+        function readdishInfo(restaurant_name) {
+            db.collection("restaurants").where("name", "==", restaurant_name)
+                .get()
+                .then(function (snap) {
+                    snap.forEach(function (doc) {
+                        var name = doc.data().name;
+                        var info = doc.data().info;
+                        var picture = doc.data().pictures;
+                        $("#name-goes-here").text(name);
+                        $("#info-goes-here").text(info);
+                        $("#resPicture").attr("src", picture);
+                        
+                        console.log(name)
+                        console.log(info)
+                        console.log(picture)
+
+
+                    })
+                })
+        }
+
+        dishQuery();
+    </script>
+
+
+
 </body>
 
 </html>
