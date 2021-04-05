@@ -84,6 +84,7 @@
         .foodPicture {
             all: initial;
         }
+
         .heading {
             width: 80%;
             margin: 0 auto;
@@ -114,18 +115,9 @@
     </div>
 
 
-    <div class="container">
-        <div class="d-flex justify-content-end">
-            <div class="button d-flex justify-content-end mt-2">
-                <a href="write_a_review.html"><button class="btn text-light fs-5 yellow-800" href="#">Write a
-                        review</button></a>
-            </div>
-        </div>
-    </div>
-
     <div class="album py-5 bg-light">
         <div class="todayhead text-center">
-            <h4><b>Today's Recommendations</b></h4>
+            <h4 id='name-goes-here'><b>Today's Recommendations</b></h4>
         </div>
         <div class="container">
             <div class="heading row row-cols-1 row-cols-sm-1 row-cols-md-1 g-3">
@@ -133,8 +125,7 @@
                     <div class="card shadow-sm">
                         <img src="./images/food2.PNG" class="foodPicture img-fluid" alt="food">
                         <div class="card-body text-center">
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer.</p>
+                            <p id="info-goes-here" class="card-text"></p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group text-center">
                                     <button type="button" class="btn btn-sm btn-outline-secondary"><i
@@ -310,12 +301,41 @@
             // let reference = db.collection("categories").doc(category)
             db.collection("dishes").where("restaurant", "==", restaurant_name)
                 .onSnapshot(function (query) {
+                    readRestaurantInfo(restaurant_name)
                     query.forEach(function (document) {
                         // add_restaurant(document.id, document.get("name"), document.get("pictures"), "Food quality")
                         console.log(document.id, document.get("dish_name"), document.get("restaurant"))
                         add_dishes(document.id, document.get("dish_name"), document.get("images"))
                     })
                 })
+        }
+
+        function readRestaurantInfo(restaurant_name) {
+            db.collection("restaurants").where("name", "==", restaurant_name)
+                .get()
+                .then(function (snap) {
+                    snap.forEach(function (doc) {
+                        var name = doc.data().name;
+                        var info = doc.data().info;
+                        $("#name-goes-here").text(name);
+                        $("#info-goes-here").text(info);
+                        console.log(name)
+                        console.log(info)
+
+                        //document.getElementById("cities-go-here").innerHTML = newdom;
+                    })
+                })
+
+            // .onSnapshot(function (snap) {
+            //     document.getElementById("name-goes-here").innerText = snap.data().name
+
+            // })
+            // db.collection("restaurants").doc("restaurant_id")
+            //     .onSnapshot(
+            //         function (snap) {
+            //             console.log(snap.data());                       //.data() returns data object
+            //             document.getElementById("quote-goes-here").innerHTML = snap.data().message;    //using vanilla javascript
+            //         })
         }
 
         function writeDishes() {
@@ -335,9 +355,9 @@
 
 
         const params = new URLSearchParams(window.location.search)
-        const value = params.get('category')
-        console.log(value);
-        readrestaurants(value);
+        const dish_name = params.get('category')
+        console.log(dish_name);
+        readrestaurants(dish_name);
     </script>
 </body>
 
