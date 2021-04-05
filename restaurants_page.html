@@ -160,31 +160,33 @@
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
     <script>
-        function add_restaurant(id, name, img, review_title ) {
-            let image_div = document.createElement("div")
-            image_div.className = "img_div d-flex flex-row align-items-center me-5 mb-5"
-            let image_source_div = document.createElement("div")
-            let a_tag = document.createElement('a')
-            a_tag.setAttribute("href", "./individual_restaurant_food_review.html?restaurant=" + id)
-            image_source_div.className = "review_individual_restaurant mb-2 pe-3 pt-1"
-            let image = document.createElement("img")
-            image.setAttribute("src", img)
-            a_tag.appendChild(image)
-            image_source_div.appendChild(a_tag)
-            let review_text = document.createElement("div")
-            let title = document.createElement("h5")
-            title.innerText = name
-            review_text.appendChild(title)
-            let review_header = document.createElement("h6")
-            review_header.innerText = "Food quality"
-            review_text.appendChild(review_header)
-            let review_description = document.createElement("p")
-            review_description.innerText = "I personally think this is probably the best Chinese food in town. The pickled pepper fish head can't be more authentic. Also, the pepper fried egg dish brings my childhood memories back!" 
-            review_text.appendChild(review_description)
-            image_div.appendChild(image_source_div)
-            image_div.appendChild(review_text)
-            document.getElementsByClassName("food_review")[0].appendChild(image_div)
-        }
+        
+
+        // function add_restaurant(id, name, img, review_title ) {
+        //     let image_div = document.createElement("div")
+        //     image_div.className = "img_div d-flex flex-row align-items-center me-5 mb-5"
+        //     let image_source_div = document.createElement("div")
+        //     let a_tag = document.createElement('a')
+        //     a_tag.setAttribute("href", "./individual_restaurant_food_review.html?restaurant=" + id)
+        //     image_source_div.className = "review_individual_restaurant mb-2 pe-3 pt-1"
+        //     let image = document.createElement("img")
+        //     image.setAttribute("src", img)
+        //     a_tag.appendChild(image)
+        //     image_source_div.appendChild(a_tag)
+        //     let review_text = document.createElement("div")
+        //     let title = document.createElement("h5")
+        //     title.innerText = name
+        //     review_text.appendChild(title)
+        //     let review_header = document.createElement("h6")
+        //     review_header.innerText = "Food quality"
+        //     review_text.appendChild(review_header)
+        //     let review_description = document.createElement("p")
+        //     review_description.innerText = "I personally think this is probably the best Chinese food in town. The pickled pepper fish head can't be more authentic. Also, the pepper fried egg dish brings my childhood memories back!" 
+        //     review_text.appendChild(review_description)
+        //     image_div.appendChild(image_source_div)
+        //     image_div.appendChild(review_text)
+        //     document.getElementsByClassName("food_review")[0].appendChild(image_div)
+        // }
         //add_restaurant("Dynasty", "./images/chinese_category.jpg", "Food quality" )
 
         function readrestaurants(restaurant_name) {
@@ -193,7 +195,8 @@
             .onSnapshot(function (query) {
                 query.forEach(function (document) {
                     // add_restaurant(document.id, document.get("name"), document.get("pictures"), "Food quality")
-                    console.log(document.id, document.get("dish_name"), document.get("restaurant") )
+                    console.log(document.id, document.get("dish_name"), document.get("restaurant"))
+
                 })
             })
         }
