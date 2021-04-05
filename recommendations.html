@@ -128,14 +128,14 @@
 
                 <div class="col">
                     <div class="card shadow-sm">
-                        <img src="./images/food1.PNG" class="foodPicture img-fluid" alt="food">
+                        <img src="./images/food1.PNG" class="foodPicture img-fluid" alt="food" id="first-dishPicture">
                         <div class="card-body text-center">
                             <h4 id="first-dish-name-goes-here">name</h4>
-                            <a href="#" class="btn restaurantButton  my-1">Restaurant 1</a>
+                            <a href="#" class="btn restaurantButton  my-1" id="first-restaurant-name-goes-here">restaurant name</a>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-sm btn-outline-secondary">Likes</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Reviews</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary" id="first-likes">likes</button>
                                 </div>
                             </div>
                         </div>
@@ -144,16 +144,14 @@
 
                 <div class="col">
                     <div class="card shadow-sm">
-                        <img src="./images/food2.PNG" class="foodPicture img-fluid" alt="food">
+                        <img src="./images/food2.PNG" class="foodPicture img-fluid" alt="food" id="second-dishPicture">
                         <div class="card-body text-center">
                             <h4 id="second-dish-name-goes-here">name</h4>
-                            <a href="#" class="btn restaurantButton my-1">Restaurant 2</a>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer.</p>
+                            <a href="#" class="btn restaurantButton my-1" id="second-restaurant-name-goes-here">Restaurant 2</a>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Location</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Reviews</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Likes</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary" id="second-likes">likes</button>
                                 </div>
                             </div>
                         </div>
@@ -162,16 +160,14 @@
 
                 <div class="col">
                     <div class="card shadow-sm">
-                        <img src="./images/food3.PNG" class="foodPicture img-fluid" alt="food">
+                        <img src="./images/food3.PNG" class="foodPicture img-fluid" alt="food" id="third-dishPicture">
                         <div class="card-body text-center">
-                            <h4 id="thrid-dish-name-goes-here">name</h4>
-                            <a href="#" class="btn restaurantButton  my-1">Restaurant 3</a>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer.</p>
+                            <h4 id="third-dish-name-goes-here">name</h4>
+                            <a href="#" class="btn restaurantButton  my-1" id="third-restaurant-name-goes-here">Restaurant 3</a>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Location</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Reviews</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Likes</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary" id="third-likes">likes</button>
                                 </div>
                             </div>
                         </div>
@@ -266,18 +262,20 @@
                         let rest_element = `#${rank}-restaurant-name-goes-here`
                         let like_element = `#${rank}-likes`
                         let pic_element = `#${rank}-dishPicture`
+                        // let rest_a_element = `#${rank}-restaurant-atag-goes-here`
 
                         $(dish_element).text(dish_name);
                         $(rest_element).text(restaurant);
                         $(like_element).text(likes);
                         $(pic_element).attr("src", picture);
+                        $(rest_element).attr("href", `restaurants_page.html?category=${restaurant}`);
 
                         console.log(dish_name)
                         console.log(restaurant)
                         console.log(likes)
                         console.log(picture)
                         console.log(rank)
-                        console.log(dish_element)
+                        console.log(pic_element)
                     })
                 })
         }
