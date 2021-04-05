@@ -213,8 +213,6 @@
                 var uid = user.uid;
                 console.log(uid)
                 // db.collection("users").doc(user.uid).update({
-                // "vegan": true,
-                // "foods": ["korean", "italian", "chinese"]
                 // }, {merge: true})
             } else {
                 // No user is signed in.
@@ -223,15 +221,13 @@
         });
         let saveButton = document.querySelector("#sButton");
         saveButton.addEventListener("click", function () {
-            console.log("button clicked.");
+            console.log("button clicked.")
 
-            // vegeterainCheck = document.querySelector('input[name="vegan"]:checked').value;
-            // veganCheck = document.querySelector('input[name="vegan"]:checked').value;
-            // console.log(veganCheck)
-            //change!!
-
+            //update food_quality or service_quality fields based on user choice
             food_quality = document.querySelector('input[id="FoodQuality"]').checked
             service_quality = document.querySelector('input[id="ServiceQuality"]').checked
+
+            //only get current logged in user id
             var user = firebase.auth().currentUser;
             var uid = user.uid;
             db.collection("users").doc(user.uid).update({
@@ -239,12 +235,6 @@
                 "service_quality": service_quality
             }, { merge: true })
         });
-
-
-
-
-
-
 
     </script>
 </body>
