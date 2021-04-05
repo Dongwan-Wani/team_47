@@ -22,3 +22,20 @@ img {
     background-color: bisque;
 
 }
+
+h1 {
+    font-size: 5vh;
+}
+
+.foodPicture {
+    height: 250px;
+}
+
+.todayhead {
+    color: #84ad52;
+}
+
+.restaurantButton {
+    background-color: #84ad52;
+    color: white;
+}
