@@ -18,6 +18,16 @@
             background-color: bisque;
 
         }
+
+        .thumb {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        p {
+            margin-left: 10px;
+        }
         
 
 
