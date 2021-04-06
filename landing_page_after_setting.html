@@ -78,6 +78,10 @@
         .body {
             margin-bottom: 60px;
         }
+
+        p {
+            text-align: center
+        }
     </style>
 
 </head>
@@ -239,20 +243,39 @@
             //create a class to create hover effect in css
             like_div.className = "thumb"
             let like = document.createElement("h5")
-            like.innerHTML = '<i class="far fa-thumbs-up thumbs" style="font-size:3rem"></i>'
+            like.innerHTML = '<i class="far fa-thumbs-up thumbs" style="font-size:2rem"></i>'
             like_div.appendChild(like)
 
+            //create a second like button
+            let like_div2 = document.createElement("div")
+
+            //create a class to create hover effect in css
+            like_div2.className = "thumb"
+            let like2 = document.createElement("h5")
+            like2.innerHTML = '<i class="far fa-thumbs-up thumbs" style="font-size:2rem"></i>'
+            like_div2.appendChild(like2)
+
+            //number_p is the amount of likes for food quality
             let number_p = document.createElement("p")
             like_div.appendChild(number_p)
 
-            //attache event listener to thumb
+
+            let number_p2 = document.createElement("p")
+            like_div2.appendChild(number_p2)
+
+
+            //attache event listener to the first thumb
             addLikeListener(id, like, number_p)
+
+            //attache event listener to the second thumb
+            addLikeListener2(id, like2, number_p2)
 
 
             //append child divs to parent div
             restaurant_name.appendChild(img_div)
             restaurant_name.appendChild(text_div)
             restaurant_name.appendChild(like_div)
+            restaurant_name.appendChild(like_div2)
         
             document.getElementsByClassName("restaurant")[0].appendChild(restaurant_name)
         }
@@ -273,7 +296,27 @@
             db.collection("restaurants")
             .doc(id)
             .onSnapshot(function(snap){
-                number_p.innerText=snap.get("foodqualityscore")
+                number_p.innerText="food quality " + snap.get("foodqualityscore")
+            })
+        }
+
+        function addLikeListener2(id, like2, number_p2) {
+            firebase.auth().onAuthStateChanged(function (user) {
+                like2.addEventListener("click", function () {
+                    console.log("like was click!")
+                    db.collection("restaurants")
+                        .doc(id)
+                        .update({
+                            servicequalityscore: firebase.firestore.FieldValue.increment(1) //increments like!
+                        })
+
+                })
+            })
+
+            db.collection("restaurants")
+            .doc(id)
+            .onSnapshot(function(snap){
+                number_p2.innerText="service quality " + snap.get("servicequalityscore")
             })
         }
 
