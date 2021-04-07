@@ -1,0 +1,32 @@
+h2 {
+    font-family: 'Ranchers', cursive;
+    color: #84ad52;
+    letter-spacing: 2px;
+}
+
+#care {
+    color: #929398;
+}
+
+input[type='radio'] {
+    display: inline-block;
+    text-align: center;
+    color: #84ad52;
+    background-color: red;
+}
+
+input[type='radio']:checked:blank {
+    display: inline-block;
+    text-align: center;
+    color: #84ad52;
+    background-color: red;
+    background: './logo_image/Dinosaur-icon.png';
+}
+
+.selection {
+    background-color: whitesmoke; opacity: 0.9;
+}
+
+.option {
+    color: #84ad52;
+}
