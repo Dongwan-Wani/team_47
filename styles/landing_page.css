@@ -1,34 +1,98 @@
-        img {
-            height: 150px;
-            width: 200px;
-            border-radius: 50%;
-            padding-left: 15px;
-        }
+    
+form.example input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    width: 80%;
+    background: #f1f1f1;
+}
 
-        .img_div {
-            border-width:2px;  
-            border-style:solid ;
-            border-color: bisque;
-            border-radius: 5%;
-            background-color: rgb(241, 235, 226);
-            overflow: auto;
-        }
+form.example button {
+    float: left;
+    width: 20%;
+    padding: 10px;
+    background: #2196F3;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none;
+    cursor: pointer;
+}
 
-        .thumb:hover {
-            background-color: bisque;
+form.example button:hover {
+    background: #0b7dda;
+}
 
-        }
+form.example::after {
+    content: "";
+    clear: both;
+    display: table;
+}
 
-        .thumb {
-            display: flex;
-            justify-content: space-evenly;
-            align-items: center;
-        }
+.appname {
+    text-align: center;
+    background-color: #84ad52;
+    margin-bottom: 20px;
+}
 
-        p {
-            margin-left: 10px;
-        }
-        
+.navbar {
+    background-color: #84ad52;
+}
+
+div.dropdown-menu {
+    background-color: #84ad52;
+}
+
+form.example {
+    width: 80%;
+}
+
+#searchbar {
+    background-color: #84ad52;
+    width: 10%
+}
+
+.body {
+    margin-bottom: 60px;
+}
+
+p {
+    text-align: center
+}
+
+    
+    img {
+        height: 150px;
+        width: 200px;
+        border-radius: 50%;
+        padding-left: 15px;
+    }
+
+    .img_div {
+        border-width:2px;  
+        border-style:solid ;
+        border-color: bisque;
+        border-radius: 5%;
+        background-color: rgb(241, 235, 226);
+        overflow: auto;
+    }
+
+    .thumb:hover {
+        background-color: bisque;
+
+    }
+
+    .thumb {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    p {
+        margin-left: 10px;
+    }
+    
 
 
 
