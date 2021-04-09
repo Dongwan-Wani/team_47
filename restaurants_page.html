@@ -142,7 +142,7 @@
                     </li>
                 </ul>
             </div>
-            <button class="btn" href="#"><i class="bi bi-house-door-fill" style="font-size:3rem;"></i></button>
+            <a href="landing_page_after_setting.html"><button class="btn" href="#"><i class="bi bi-house-door-fill" style="font-size:3rem;"></i></button></a>
             <a href="index.html"><button class="btn" href="#"><i class="bi bi-person-circle"
                         style="font-size:3rem;"></i></button></a>
         </div>
@@ -180,7 +180,7 @@
     <!--------------------------------------------------------------------->
     <script>
         const params = new URLSearchParams(window.location.search)
-        const restaurant_name = params.get('category')
+        const restaurant_name = params.get('name')
 
         function add_dishes(id, name, pic) {
             //create a parent div
