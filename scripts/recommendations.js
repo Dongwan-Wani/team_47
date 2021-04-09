@@ -43,7 +43,7 @@ function readdishInfo(dish_name, rank) {
                 $(rest_element).text(restaurant);
                 $(like_element).text(likes);
                 $(pic_element).attr("src", picture);
-                $(rest_element).attr("href", `restaurants_page.html?category=${restaurant}`);
+                $(rest_element).attr("href", `restaurants_page.html?name=${restaurant}`);
 
                 console.log(dish_name)
                 console.log(restaurant)
