@@ -51,7 +51,7 @@ function add_restaurants(id, name, pic) {
     let image = document.createElement("img")
     image.setAttribute("src", pic)
     let a_link = document.createElement("a")
-    a_link.setAttribute("href", "restaurants_page.html?category=" + name)
+    a_link.setAttribute("href", "restaurants_page.html?name=" + name)
     a_link.appendChild(image)
     img_div.appendChild(a_link)
 
