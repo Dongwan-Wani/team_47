@@ -30,3 +30,8 @@ input[type='radio']:checked:blank {
 .option {
     color: #84ad52;
 }
+
+.foodPicture {
+    height: 500px;
+}
+
