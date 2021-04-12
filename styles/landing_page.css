@@ -79,10 +79,6 @@ p {
         margin-top: 100px;
     }
 
-    .thumb:hover {
-        background-color: bisque;
-
-    }
 
     .thumb {
         display: flex;
