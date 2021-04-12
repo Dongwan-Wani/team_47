@@ -67,7 +67,7 @@ function add_restaurants(id, name, pic) {
     //create a class to create hover effect in css
     like_div.className = "thumb"
     let like = document.createElement("h5")
-    like.innerHTML = '<i class="far fa-thumbs-up thumbs" style="font-size:2rem"></i>'
+    like.innerHTML = '<button type="button" class="btn btn-sm btn-outline-secondary"><i class="bi bi-hand-thumbs-up-fill"></i> Likes</button>'
     like_div.appendChild(like)
 
     //create a second like button
@@ -76,7 +76,7 @@ function add_restaurants(id, name, pic) {
     //create a class to create hover effect in css
     like_div2.className = "thumb"
     let like2 = document.createElement("h5")
-    like2.innerHTML = '<i class="far fa-thumbs-up thumbs" style="font-size:2rem"></i>'
+    like2.innerHTML = '<button type="button" class="btn btn-sm btn-outline-secondary"><i class="bi bi-hand-thumbs-up-fill"></i> Likes</button>'
     like_div2.appendChild(like2)
 
     //number_p is the amount of likes for food quality
@@ -140,6 +140,6 @@ function addLikeListener2(id, like2, number_p2) {
     db.collection("restaurants")
     .doc(id)
     .onSnapshot(function(snap){
-        number_p2.innerText="service quality " + snap.get("servicequalityscore")
+        number_p2.innerHTML="service quality " + snap.get("servicequalityscore")
     })
 }

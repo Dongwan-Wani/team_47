@@ -76,6 +76,7 @@ p {
         border-radius: 5%;
         background-color: rgb(241, 235, 226);
         overflow: auto;
+        margin-top: 100px;
     }
 
     .thumb:hover {
