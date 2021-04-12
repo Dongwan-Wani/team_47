@@ -31,7 +31,7 @@ function add_dishes(id, name, pic) {
     //create a class to create hover effect in css
     like_div.className = "thumb"
     let like = document.createElement("h5")
-    like.innerHTML = '<i class="far fa-thumbs-up thumbs" style="font-size:3rem"></i>'
+    like.innerHTML = '<button type="button" class="btn btn-sm btn-outline-secondary"><i class="bi bi-hand-thumbs-up-fill"></i> Likes</button>'
     like_div.appendChild(like)
 
     let number_p = document.createElement("p")
