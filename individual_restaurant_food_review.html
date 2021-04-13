@@ -97,9 +97,8 @@
     <!--------------------------------------------------------------------->
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
-    <script type="text/javascript" src="individual_restaurant_food_review.js"></script>
-    
-     /*   function add_review(restaurant, img, review_title, review) {
+    <script>
+        function add_review(restaurant, img, review_title, review) {
             let image_div = document.createElement("div")
             image_div.className = "img_div d-flex flex-row align-items-center me-5 mb-5"
             let image_source_div = document.createElement("div")
@@ -142,7 +141,8 @@
         const params = new URLSearchParams(window.location.search)
         const value = params.get('restaurant')
 
-        readReviews(value) */
+        readReviews(value) 
+    </script>    
     
     
 </body>
