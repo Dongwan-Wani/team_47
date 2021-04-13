@@ -16,95 +16,9 @@
     <link rel="stylesheet" href="./styles/dishes_page.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+    <link rel="stylesheet" href="./styles/restaurants_page.css">
     <link href="https://fonts.googleapis.com/css2?family=Ranchers&display=swap" rel="stylesheet">
     <!-- Optional styles and scripts of your own -->
-    <style>
-        form.example input[type=text] {
-            padding: 10px;
-            font-size: 17px;
-            border: 1px solid grey;
-            float: left;
-            width: 80%;
-            background: #f1f1f1;
-        }
-
-        form.example button {
-            float: left;
-            width: 20%;
-            padding: 10px;
-            background: #2196F3;
-            color: white;
-            font-size: 17px;
-            border: 1px solid grey;
-            border-left: none;
-            cursor: pointer;
-        }
-
-        form.example button:hover {
-            background: #0b7dda;
-        }
-
-        form.example::after {
-            content: "";
-            clear: both;
-            display: table;
-        }
-
-        .appname {
-            text-align: center;
-            background-color: #84ad52;
-            margin-bottom: 20px;
-        }
-
-        .navbar {
-            background-color: #84ad52;
-        }
-
-        div.dropdown-menu {
-            background-color: #84ad52;
-        }
-
-        form.example {
-            width: 80%;
-        }
-
-        #searchbar {
-            background-color: #84ad52;
-            width: 10%
-        }
-
-        .body {
-            margin-bottom: 60px;
-        }
-
-        .img_div {
-            overflow: auto;
-        }
-
-        .foodPicture {
-            all: initial;
-        }
-
-        .heading {
-            width: 80%;
-            margin: 0 auto;
-        }
-
-        .modal-title {
-            color: #84ad52;
-        }
-
-        .modal-body {
-            text-align: center;
-        }
-
-        .parkinginfo {
-            all: initial;
-            width: 65vw;
-            display: block;
-        }
-    </style>
-
 </head>
 
 <body>
@@ -124,7 +38,7 @@
     <div class="d-flex justify-content-center">
         <form class="example" action="/action_page.php">
             <input type="text" placeholder="Looking for..." name="search">
-            <button id="searchbar" type="submit">Go<i class="fa fa-search"></i></button>
+            <button id="searchbar" type="submit"><i class="fa fa-search"></i></button>
         </form>
     </div>
 
@@ -219,17 +133,17 @@
                             <i class="bi bi-list" style="font-size: 3rem; color: rgb(43, 35, 35);"></i>
                         </a>
                         <div class="dropdown-menu dropup" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#"><i class="bi bi-hand-thumbs-up-fill"></i><b>
+                            <a class="dropdown-item" href="recommendations.html"><i class="bi bi-hand-thumbs-up-fill"></i><b>
                                     RECOMMENDATIONS</b></a>
-                            <a class="dropdown-item" href="#"><i class="bi bi-list-stars"></i><b> REVIEWS</b></a>
-                            <a class="dropdown-item" href="user_preference_rev.html"><b><i class="bi bi-gear"></i>
+                            <a class="dropdown-item" href=""><i class="bi bi-list-stars"></i><b> REVIEWS</b></a>
+                            <a class="dropdown-item" href="user_preference_setting.html"><b><i class="bi bi-gear"></i>
                                     SETTINGS</b></a>
                         </div>
                     </li>
                 </ul>
             </div>
-            <button class="btn" href="#"><i class="bi bi-house-door-fill" style="font-size:3rem;"></i></button>
-            <a href="login.html"><button class="btn" href="#"><i class="bi bi-person-circle"
+            <a href="landing_page_after_setting.html"><button class="btn" href="#"><i class="bi bi-house-door-fill" style="font-size:3rem;"></i></button></a>
+            <a href="index.html"><button class="btn" href="#"><i class="bi bi-person-circle"
                         style="font-size:3rem;"></i></button></a>
         </div>
     </nav>
@@ -264,131 +178,8 @@
     <!--------------------------------------------------------------------->
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
-    <script>
-        const params = new URLSearchParams(window.location.search)
-        const restaurant_name = params.get('category')
+    <script src="./scripts/restaurants_page.js"></script>
 
-        function add_dishes(id, name, pic) {
-            //create a parent div
-            let dish_name = document.createElement("div")
-
-            //assign class to restaurant_name
-            dish_name.className = "img_div d-flex flex-column align-items-center me-5 mb-1"
-
-            //create an image div inside parent div  
-            let img_div = document.createElement("div")
-            img_div.className = "food mb-2 pe-3 pt-1"  // set a class
-
-            let image = document.createElement("img")
-            image.setAttribute("src", pic)
-            let a_link = document.createElement("a")
-            a_link.setAttribute("href", "#")
-            a_link.appendChild(image)
-            img_div.appendChild(a_link)
-
-            //create a div for Dish name
-            let text_div = document.createElement("div")
-            let header = document.createElement("h5")
-            text_div.appendChild(header)
-            header.innerText = name
-
-            //create a like button
-            let like_div = document.createElement("div")
-
-            //create a class to create hover effect in css
-            like_div.className = "thumb"
-            let like = document.createElement("h5")
-            like.innerHTML = '<i class="far fa-thumbs-up thumbs" style="font-size:3rem"></i>'
-            like_div.appendChild(like)
-
-            let number_p = document.createElement("p")
-            like_div.appendChild(number_p)
-
-            //attache event listener to thumb
-            addLikeListener(id, like, number_p)
-
-
-            //append child divs to parent div
-            dish_name.appendChild(img_div)
-            dish_name.appendChild(text_div)
-            dish_name.appendChild(like_div)
-
-            document.getElementsByClassName("restaurant")[0].appendChild(dish_name)
-        }
-
-
-
-        function readrestaurants(restaurant_name) {
-            // let reference = db.collection("categories").doc(category)
-            db.collection("dishes").where("restaurant", "==", restaurant_name)
-                .get()
-                .then(function (query) {
-                    readRestaurantInfo(restaurant_name)
-                    query.forEach(function (document) {
-                        // add_restaurant(document.id, document.get("name"), document.get("pictures"), "Food quality")
-                        console.log(document.id, document.get("dish_name"), document.get("restaurant"))
-                        add_dishes(document.id, document.get("dish_name"), document.get("images"))
-                    })
-                })
-        }
-
-        function readRestaurantInfo(restaurant_name) {
-            db.collection("restaurants").where("name", "==", restaurant_name)
-                .get()
-                .then(function (snap) {
-                    snap.forEach(function (doc) {
-                        var name = doc.data().name;
-                        var info = doc.data().info;
-                        var picture = doc.data().pictures;
-                        $("#name-goes-here").text(name);
-                        $("#info-goes-here").text(info);
-                        $("#resPicture").attr("src", picture);
-
-                        console.log(name)
-                        console.log(info)
-                        console.log(picture)
-
-
-                    })
-                })
-        }
-
-        function addLikeListener(id, like, number_p) {
-            firebase.auth().onAuthStateChanged(function (user) {
-                like.addEventListener("click", function () {
-                    console.log("like was click!")
-                    db.collection("dishes")
-                        .doc(id)
-                        .update({
-                            foodqualityscore: firebase.firestore.FieldValue.increment(1) //increments like!
-                        })
-
-                })
-            })
-
-            db.collection("dishes")
-                .doc(id)
-                .onSnapshot(function (snap) {
-                    number_p.innerText = snap.get("foodqualityscore")
-                })
-        }
-
-        function writeDishes() {
-            var DishesRef = db.collection("dishes");
-            // Bibimbap
-            // Tteok-bokki
-            DishesRef.add({
-                dish_name: "Tteok-bokki",
-                images: "./imges/dishes/food1.PNG",
-                restaurant: "Haru",
-                foodqualityscore: 0
-            });
-
-        }
-
-        console.log(restaurant_name);
-        readrestaurants(restaurant_name);
-    </script>
 </body>
 
 </html>

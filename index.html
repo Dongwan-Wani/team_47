@@ -19,7 +19,6 @@
 
     <!-- Optional styles and scripts of your own -->
 
-
 </head>
 
 <body>
@@ -41,12 +40,17 @@
         </div>
     </div>
 
+    <div class="tap">
+        <a href="#" class="btn indexButton  my-1 disabled" id="first-restaurant-name-goes-here"><i class="bi bi-person-circle"></i>  SIGN IN </a>
+    </div>
 
     <div class="container">
-
         <div id="firebaseui-auth-container"></div>
+    </div>
 
-
+    <div class="tap">
+        <a href="recommendations.html" class="btn indexButton  my-1" id="first-restaurant-name-goes-here"><i class="bi bi-hand-thumbs-up-fill"></i> SEE MOST
+            POPULAR DISHES</a>
     </div>
 
 
@@ -61,7 +65,7 @@
                             <i class="bi bi-list" style="font-size: 3rem; color: rgb(43, 35, 35);"></i>
                         </a>
                         <div class="dropdown-menu dropup" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#"><b>Recommendations</b></a>
+                            <a class="dropdown-item" href="recommendations.html"><b>Recommendations</b></a>
                             <a class="dropdown-item" href="#"><b>Reviews</b></a>
                             <a class="dropdown-item" href="#"><b>Settings</b></a>
                         </div>
@@ -110,7 +114,7 @@
                             email: user.email                   //with authenticated user's ID (user.uid)
                         }).then(function () {
                             console.log("New user added to firestore");
-                            window.location.assign("user_preference_rev.html");       //re-direct to main.html after signup
+                            window.location.assign("user_preference_setting.html");       //re-direct to main.html after signup
                         })
                             .catch(function (error) {
                                 console.log("Error adding new user: " + error);
@@ -124,7 +128,7 @@
             },
             // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
             signInFlow: 'popup',
-            signInSuccessUrl: 'user_preference_rev.html',
+            signInSuccessUrl: 'user_preference_setting.html',
             signInOptions: [
                 // Leave the lines as is for the providers you want to offer your users.
                 //firebase.auth.GoogleAuthProvider.PROVIDER_ID,

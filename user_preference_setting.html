@@ -13,92 +13,11 @@
         integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="./styles/common.css">
+    <link rel="stylesheet" href="./styles/user_preference_setting.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Ranchers&display=swap" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
     <!-- Optional styles and scripts of your own -->
-    <style>
-        form.example input[type=text] {
-            padding: 10px;
-            font-size: 17px;
-            border: 1px solid grey;
-            float: left;
-            width: 80%;
-            background: #f1f1f1;
-        }
-
-        form.example button {
-            float: left;
-            width: 20%;
-            padding: 10px;
-            background: #2196F3;
-            color: white;
-            font-size: 17px;
-            border: 1px solid grey;
-            border-left: none;
-            cursor: pointer;
-        }
-
-        form.example button:hover {
-            background: #0b7dda;
-        }
-
-        form.example::after {
-            content: "";
-            clear: both;
-            display: table;
-        }
-
-
-
-        form.example {
-            width: 80%;
-        }
-
-        .vegeteriancheck {
-            margin-right: 10px;
-            margin-left: 5px;
-        }
-
-        body {
-            margin-bottom: 10vh;
-        }
-
-        h2 {
-            font-family: 'Ranchers', cursive;
-            color: #84ad52;
-            letter-spacing: 2px;
-        }
-
-        #care {
-            color: #929398;
-        }
-
-        input[type='radio'] {
-            display: inline-block;
-            text-align: center;
-            color: #84ad52;
-            background-color: red;
-        }
-
-        input[type='radio']:checked:blank {
-            display: inline-block;
-            text-align: center;
-            color: #84ad52;
-            background-color: red;
-            background: './logo_image/Dinosaur-icon.png';
-        }
-
-        .selection {
-            background-color: whitesmoke; opacity: 0.9;
-        }
-
-        .option {
-            color: #84ad52;
-        }
-        
-    </style>
-
 </head>
 
 <body>
@@ -129,11 +48,11 @@
 
                 <div class="col-6">
                     <div class="card shadow-sm">
-                        <img src="./images/food_quality.jpg" class="foodPicture img-fluid" alt="food">
+                        <img src="./images/preference_setting_page_pics/food_quality_pancake.jpg" class="foodPicture img-fluid" alt="food">
                         <div class="card-body text-center selection">
-                            <h2 class='option'>Food Quality</h2>
+                            <h1 class='option'>Food Quality</h1>
                             <div class="radio">
-                                <input class="radio" type="radio" name="FoodServiceQuality" id="FoodQuality">
+                                <input class="radio" type="radio" name="FoodServiceQuality" id="FoodQuality" style="width: 50px; height: 50px;">
                             </div>
                         </div>
                     </div>
@@ -142,25 +61,27 @@
 
                 <div class="col-6">
                     <div class="card shadow-sm">
-                        <img src="./images/service.jpg" class="foodPicture img-fluid" alt="food">
+                        <img src="./images/preference_setting_page_pics/food_quality.jpg" class="foodPicture img-fluid" alt="food">
                         <div class="card-body text-center selection">
-                            <h2 class='option'>Service Quality</h2>
+                            <h1 class='option'>Service Quality</h1>
                             <div class="radio">
-                                <input class="radio" type="radio" name="FoodServiceQuality" id="ServiceQuality">
+                                <input class="radio" type="radio" name="FoodServiceQuality" id="ServiceQuality" style="width: 50px; height: 50px;" >
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <div class="d-flex flex-row justify-content-end align-self-center me-3 mb-3 mt-2">
+
+                <a href="#"><input id="sButton" class="btn button me-2" type="submit" value="SAVE"
+                        style="color: white;"></a>
+                <a href="landing_page_after_setting.html"><input id="BacktoMain" class="btn button" type="submit"
+                        value="GO TO MAIN" style="color: white;"></a>
+            </div>
         </div>
 
-        <div class="d-flex flex-row justify-content-end align-self-center me-3 mb-3 mt-2">
-
-            <a href="#"><input id="sButton" class="btn button me-2" type="submit" value="SAVE"
-                    style="color: white;"></a>
-            <a href="landing_page_after_setting.html"><input id="BacktoMain" class="btn button" type="submit"
-                    value="GO TO MAIN" style="color: white;"></a>
-        </div>
+        
     </div>
 
     </div>
@@ -180,7 +101,7 @@
                             <a class="dropdown-item" href="recommendations.html"><i class="bi bi-hand-thumbs-up-fill"></i><b>
                                     RECOMMENDATIONS</b></a>
                             <a class="dropdown-item" href="#"><i class="bi bi-list-stars"></i><b> REVIEWS</b></a>
-                            <a class="dropdown-item" href="user_preference_rev.html"><b><i class="bi bi-gear"></i>
+                            <a class="dropdown-item" href="user_preference_setting.html"><b><i class="bi bi-gear"></i>
                                     SETTINGS</b></a>
                         </div>
                     </li>
@@ -188,12 +109,12 @@
             </div>
 
 
-            <a href="landing_page_after_setting.html"><button class="btn"><i class="bi bi-house-door-fill" style="font-size:3rem;"></i></button></a>
+            <a href="user_preference_setting.html"><button class="btn"><i class="bi bi-house-door-fill" style="font-size:3rem;"></i></button></a>
 
 
 
 
-            <a href="login.html"><button class="btn" href="#"><i class="bi bi-person-circle"
+            <a href="index.html"><button class="btn" href="#"><i class="bi bi-person-circle"
                         style="font-size:3rem;"></i></button></a>
         </div>
     </nav>
@@ -216,39 +137,7 @@
     <!--------------------------------------------------------------------->
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
-    <script>
-        firebase.auth().onAuthStateChanged(function (user) {
-            if (user) {
-                // User is signed in.
-                console.log("Success")
-                var user = firebase.auth().currentUser;
-                var uid = user.uid;
-                console.log(uid)
-                // db.collection("users").doc(user.uid).update({
-                // }, {merge: true})
-            } else {
-                // No user is signed in.
-                console.log("not log-in")
-            }
-        });
-        let saveButton = document.querySelector("#sButton");
-        saveButton.addEventListener("click", function () {
-            console.log("button clicked.")
-
-            //update food_quality or service_quality fields based on user choice
-            food_quality = document.querySelector('input[id="FoodQuality"]').checked
-            service_quality = document.querySelector('input[id="ServiceQuality"]').checked
-
-            //only get current logged in user id
-            var user = firebase.auth().currentUser;
-            var uid = user.uid;
-            db.collection("users").doc(user.uid).update({
-                "food_quality": food_quality,
-                "service_quality": service_quality
-            }, { merge: true })
-        });
-
-    </script>
+    <script src="./scripts/user_preference_setting.js"></script>
 </body>
 
 </html>

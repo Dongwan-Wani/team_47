@@ -16,82 +16,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Ranchers&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles/common.css">
     <!-- Optional styles and scripts of your own -->
-    <style>
-        form.example input[type=text] {
-            padding: 10px;
-            font-size: 17px;
-            border: 1px solid grey;
-            float: left;
-            width: 80%;
-            background: #f1f1f1;
-        }
-
-        form.example button {
-            float: left;
-            width: 20%;
-            padding: 10px;
-            background: #2196F3;
-            color: white;
-            font-size: 17px;
-            border: 1px solid grey;
-            border-left: none;
-            cursor: pointer;
-        }
-
-        form.example button:hover {
-            background: #0b7dda;
-        }
-
-        form.example::after {
-            content: "";
-            clear: both;
-            display: table;
-        }
-
-        .appname {
-            text-align: center;
-            background-color: #84ad52;
-            margin-bottom: 20px;
-        }
-
-        .navbar {
-            background-color: #84ad52;
-        }
-
-        div.dropdown-menu {
-            background-color: #84ad52;
-        }
-
-        form.example {
-            width: 80%;
-        }
-
-        #searchbar {
-            background-color: #84ad52;
-            width: 10%
-        }
-
-        .body {
-            margin-bottom: 100px;
-        }
-
-        h1 {
-            font-size: 5vh;
-        }
-
-        .foodPicture {
-            height: 250px;
-        }
-
-        .todayhead {
-            color: #84ad52;
-        }
-
-        .restaurantButton {
-            background-color: #84ad52;
-            color: white;
-        }
-    </style>
+    <link rel="stylesheet" href="./styles/recommendations.css">
 
 </head>
 
@@ -132,7 +57,7 @@
                         <div class="card-body text-center">
                             <h4 id="first-dish-name-goes-here">name</h4>
                             <a href="#" class="btn restaurantButton  my-1" id="first-restaurant-name-goes-here">restaurant name</a>
-                            <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex justify-content-center align-items-center">
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-sm btn-outline-secondary"><i class="bi bi-hand-thumbs-up-fill"></i> Likes</button>
                                     <button type="button" class="btn btn-sm btn-outline-secondary" id="first-likes">likes</button>
@@ -148,7 +73,7 @@
                         <div class="card-body text-center">
                             <h4 id="second-dish-name-goes-here">name</h4>
                             <a href="#" class="btn restaurantButton my-1" id="second-restaurant-name-goes-here">Restaurant 2</a>
-                            <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex justify-content-center align-items-center">
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-sm btn-outline-secondary"><i class="bi bi-hand-thumbs-up-fill"></i> Likes</button>
                                     <button type="button" class="btn btn-sm btn-outline-secondary" id="second-likes">likes</button>
@@ -164,7 +89,7 @@
                         <div class="card-body text-center">
                             <h4 id="third-dish-name-goes-here">name</h4>
                             <a href="#" class="btn restaurantButton  my-1" id="third-restaurant-name-goes-here">Restaurant 3</a>
-                            <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex justify-content-center align-items-center">
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-sm btn-outline-secondary"><i class="bi bi-hand-thumbs-up-fill"></i>Likes</button>
                                     <button type="button" class="btn btn-sm btn-outline-secondary" id="third-likes">likes</button>
@@ -190,16 +115,16 @@
                             <i class="bi bi-list" style="font-size: 3rem; color: rgb(43, 35, 35);"></i>
                         </a>
                         <div class="dropdown-menu dropup" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#"><i class="bi bi-hand-thumbs-up-fill"></i><b>
+                            <a class="dropdown-item" href="recommendations.html"><i class="bi bi-hand-thumbs-up-fill"></i><b>
                                     RECOMMENDATIONS</b></a>
                             <a class="dropdown-item" href="#"><i class="bi bi-list-stars"></i><b> REVIEWS</b></a>
-                            <a class="dropdown-item" href="#"><b><i class="bi bi-gear"></i> SETTINGS</b></a>
+                            <a class="dropdown-item" href="user_preference_setting.html"><b><i class="bi bi-gear"></i> SETTINGS</b></a>
                         </div>
                     </li>
                 </ul>
             </div>
-            <button class="btn" href="#"><i class="bi bi-house-door-fill" style="font-size:3rem;"></i></button>
-            <a href="login.html"><button class="btn" href="#"><i class="bi bi-person-circle"
+            <a href="landing_page_after_setting.html"><button class="btn" href="#"><i class="bi bi-house-door-fill" style="font-size:3rem;"></i></button></a>
+            <a href="index.html"><button class="btn" href="#"><i class="bi bi-person-circle"
                         style="font-size:3rem;"></i></button></a>
         </div>
     </nav>
@@ -222,68 +147,7 @@
     <!--------------------------------------------------------------------->
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
-    <script>
-        function dishQuery() {
-            top_three = []
-            db.collection("dishes")
-                //.where("population", ">", 1000000)
-                //.where("hemisphere", "==", "south")
-                //.limit(2)
-                //.orderBy("population")
-                .orderBy("foodqualityscore", "desc").limit(3)
-                .get()
-                .then(function (snap) {
-                    // console.log(snap)
-                    snap.forEach(function (doc) {
-                        var dish = doc.data().dish_name;
-                        console.log(dish);
-                        top_three.push(dish)
-                        //document.getElementById("cities-go-here").innerHTML = newdom;
-                    })
-                    readdishInfo(top_three[0], 'first')
-                    readdishInfo(top_three[1], 'second')
-                    readdishInfo(top_three[2], 'third')
-                })
-            console.log(top_three)
-
-        }
-
-
-        function readdishInfo(dish_name, rank) {
-            db.collection("dishes").where("dish_name", "==", dish_name)
-                .get()
-                .then(function (snap) {
-                    snap.forEach(function (doc) {
-                        var dish_name = doc.data().dish_name;
-                        var restaurant = doc.data().restaurant;
-                        var likes = doc.data().foodqualityscore;
-                        var picture = doc.data().images;
-                        let dish_element = `#${rank}-dish-name-goes-here`
-                        let rest_element = `#${rank}-restaurant-name-goes-here`
-                        let like_element = `#${rank}-likes`
-                        let pic_element = `#${rank}-dishPicture`
-                        // let rest_a_element = `#${rank}-restaurant-atag-goes-here`
-
-                        $(dish_element).text(dish_name);
-                        $(rest_element).text(restaurant);
-                        $(like_element).text(likes);
-                        $(pic_element).attr("src", picture);
-                        $(rest_element).attr("href", `restaurants_page.html?category=${restaurant}`);
-
-                        console.log(dish_name)
-                        console.log(restaurant)
-                        console.log(likes)
-                        console.log(picture)
-                        console.log(rank)
-                        console.log(pic_element)
-                    })
-                })
-        }
-
-        dishQuery();
-    </script>
-
-
+    <script src="./scripts/recommendations.js"></script>
 
 </body>
 

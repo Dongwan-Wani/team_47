@@ -21,63 +21,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Ranchers&display=swap" rel="stylesheet">
     <!-- Optional styles and scripts of your own -->
     <style>
-        form.example input[type=text] {
-            padding: 10px;
-            font-size: 17px;
-            border: 1px solid grey;
-            float: left;
-            width: 80%;
-            background: #f1f1f1;
-        }
 
-        form.example button {
-            float: left;
-            width: 20%;
-            padding: 10px;
-            background: #2196F3;
-            color: white;
-            font-size: 17px;
-            border: 1px solid grey;
-            border-left: none;
-            cursor: pointer;
-        }
-
-        form.example button:hover {
-            background: #0b7dda;
-        }
-
-        form.example::after {
-            content: "";
-            clear: both;
-            display: table;
-        }
-
-        .appname {
-            text-align: center;
-            background-color: #84ad52;
-            margin-bottom: 20px;
-        }
-
-        .navbar {
-            background-color: #84ad52;
-        }
-
-        div.dropdown-menu {
-            background-color: #84ad52;
-        }
-
-        form.example {
-            width: 80%;
-        }
-
-        #searchbar {
-            background-color: #84ad52;
-            width: 10%
-        }
-
-        .body {
-            margin-bottom: 60px;
-        }
     </style>
 
 </head>
@@ -99,19 +43,10 @@
     <div class="d-flex justify-content-center">
         <form class="example" action="/action_page.php">
             <input type="text" placeholder="Looking for..." name="search">
-            <button id="searchbar" type="submit">Go<i class="fa fa-search"></i></button>
+            <button id="searchbar" type="submit"><i class="fa fa-search"></i></button>
         </form>
     </div>
 
-
-    <div class="container">
-        <div class="d-flex justify-content-end">
-            <div class=" button d-flex justify-content-end mt-2">
-                <a href="write_a_review.html"><button class="btn text-light fs-5 yellow-800" href="#">Write a
-                        review</button></a>
-            </div>
-        </div>
-    </div>
 
     <div class="food_preference" style="padding-bottom: 100px;">
         <div class="restaurant mt-3 ms-5 d-flex flex-row flex-wrap justify-content-evenly">
@@ -134,17 +69,17 @@
                             <i class="bi bi-list" style="font-size: 3rem; color: rgb(43, 35, 35);"></i>
                         </a>
                         <div class="dropdown-menu dropup" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#"><i class="bi bi-hand-thumbs-up-fill"></i><b>
+                            <a class="dropdown-item" href="recommendations.html"><i class="bi bi-hand-thumbs-up-fill"></i><b>
                                     RECOMMENDATIONS</b></a>
                             <a class="dropdown-item" href="#"><i class="bi bi-list-stars"></i><b> REVIEWS</b></a>
-                            <a class="dropdown-item" href="user_preference_rev.html"><b><i class="bi bi-gear"></i>
+                            <a class="dropdown-item" href="user_preference_setting.html"><b><i class="bi bi-gear"></i>
                                     SETTINGS</b></a>
                         </div>
                     </li>
                 </ul>
             </div>
-            <button class="btn" href="#"><i class="bi bi-house-door-fill" style="font-size:3rem;"></i></button>
-            <a href="login.html"><button class="btn" href="#"><i class="bi bi-person-circle"
+            <button class="btn" href="user_preference_setting.html"><i class="bi bi-house-door-fill" style="font-size:3rem;"></i></button>
+            <a href="index.html"><button class="btn" href="#"><i class="bi bi-person-circle"
                         style="font-size:3rem;"></i></button></a>
         </div>
     </nav>
@@ -167,118 +102,7 @@
     <!--------------------------------------------------------------------->
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
-    <script>
-
-
-
-        function readRestaurants() {
-            firebase.auth().onAuthStateChanged(function (user) {
-                var user = firebase.auth().currentUser;
-                var uid = user.uid;
-                db.collection("users").doc(uid)
-                    .get().then(function (doc) {
-                        if (doc.data().food_quality) {
-                            db.collection("restaurants")
-                                .get()
-                                .then(function (query) {
-                                    query.forEach(function (doc) {
-                                        if (doc.data().foodqualityscore >= doc.data().servicequalityscore) {
-                                            add_restaurants(doc.id, doc.data().name, doc.data().pictures)
-                                        }
-                                    })
-                                })
-
-                        } else {
-                            db.collection("restaurants")
-                                .get()
-                                .then(function (query) {
-                                    query.forEach(function (doc) {
-                                        if (doc.data().foodqualityscore < doc.data().servicequalityscore) {
-                                            add_restaurants(doc.id, doc.data().name, doc.data().pictures)
-                                        }
-                                    })
-                                })
-                        }
-
-
-                    })
-
-            })
-        }
-
-
-        readRestaurants();
-
-        function add_restaurants(id, name, pic) {
-            //create a parent div
-            let restaurant_name = document.createElement("div")
-
-            //assign class to restaurant_name
-            restaurant_name.className = "img_div d-flex flex-column align-items-center me-5 mb-1"
-
-            //create an image div inside parent div  
-            let img_div = document.createElement("div")
-            img_div.className = "food mb-2 pe-3 pt-1"  // set a class
-
-            let image = document.createElement("img")
-            image.setAttribute("src", pic)
-            let a_link = document.createElement("a")
-            a_link.setAttribute("href", "restaurants_page.html?category=" + name)
-            a_link.appendChild(image)
-            img_div.appendChild(a_link)
-
-            //create a div for restaurant name
-            let text_div = document.createElement("div")
-            let header = document.createElement("h5")
-            text_div.appendChild(header)
-            header.innerText = name
-
-            //create a like button
-            let like_div = document.createElement("div")
-
-            //create a class to create hover effect in css
-            like_div.className = "thumb"
-            let like = document.createElement("h5")
-            like.innerHTML = '<i class="far fa-thumbs-up thumbs" style="font-size:3rem"></i>'
-            like_div.appendChild(like)
-
-            let number_p = document.createElement("p")
-            like_div.appendChild(number_p)
-
-            //attache event listener to thumb
-            addLikeListener(id, like, number_p)
-
-
-            //append child divs to parent div
-            restaurant_name.appendChild(img_div)
-            restaurant_name.appendChild(text_div)
-            restaurant_name.appendChild(like_div)
-        
-            document.getElementsByClassName("restaurant")[0].appendChild(restaurant_name)
-        }
-
-        function addLikeListener(id, like, number_p) {
-            firebase.auth().onAuthStateChanged(function (user) {
-                like.addEventListener("click", function () {
-                    console.log("like was click!")
-                    db.collection("restaurants")
-                        .doc(id)
-                        .update({
-                            foodqualityscore: firebase.firestore.FieldValue.increment(1) //increments like!
-                        })
-
-                })
-            })
-
-            db.collection("restaurants")
-            .doc(id)
-            .onSnapshot(function(snap){
-                number_p.innerText=snap.get("foodqualityscore")
-            })
-        }
-
-
-    </script>
+    <script src="./scripts/landing_page_after_setting.js"></script>
 </body>
 
 </html>

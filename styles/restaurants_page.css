@@ -11,10 +11,101 @@ img {
     border-radius: 1%;
     background-color: rgb(241, 235, 226);
     height: 100%;
-    width: 70%;
+    width: 20%;
     overflow: auto;
+    min-width: 170px;
+  
 }
 
 h5 {
     font:bold;
+}
+
+form.example input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    width: 80%;
+    background: #f1f1f1;
+}
+
+form.example button {
+    float: left;
+    width: 20%;
+    padding: 10px;
+    background: #2196F3;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none;
+    cursor: pointer;
+}
+
+form.example button:hover {
+    background: #0b7dda;
+}
+
+form.example::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.appname {
+    text-align: center;
+    background-color: #84ad52;
+    margin-bottom: 20px;
+}
+
+.navbar {
+    background-color: #84ad52;
+}
+
+div.dropdown-menu {
+    background-color: #84ad52;
+}
+
+form.example {
+    width: 80%;
+}
+
+#searchbar {
+    background-color: #84ad52;
+    width: 10%
+}
+
+.body {
+    margin-bottom: 60px;
+}
+
+.img_div {
+    overflow: auto;
+}
+
+.foodPicture {
+    all: initial;
+}
+
+.heading {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.modal-title {
+    color: #84ad52;
+}
+
+.modal-body {
+    text-align: center;
+}
+
+.parkinginfo {
+    all: initial;
+    width: 65vw;
+    display: block;
+}
+
+p {
+    text-align: center;
 }
