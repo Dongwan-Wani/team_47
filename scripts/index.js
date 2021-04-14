@@ -11,7 +11,7 @@ var uiConfig = {
             // If the user is a "brand new" user, then create a new "user" in your own database.
             // Assign this user with the name and email provided.
             // Before this works, you must enable "Firestore" from the firebase console.
-            // The Firestore rules must allow the user to write. 
+            // The Firestore rules allow the user to write. 
             //------------------------------------------------------------------------------------------
             var user = authResult.user;
             if (authResult.additionalUserInfo.isNewUser) {         //if new user
