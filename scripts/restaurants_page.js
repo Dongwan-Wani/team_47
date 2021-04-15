@@ -1,6 +1,7 @@
 const params = new URLSearchParams(window.location.search)
-const restaurant_name = params.get('name')
+const restaurant_name = params.get('name')  // get the restaurant name from the url 
 
+// create each dish object and add to restaurant page
 function add_dishes(id, name, pic) {
     //create a parent div
     let dish_name = document.createElement("div")
@@ -40,7 +41,6 @@ function add_dishes(id, name, pic) {
     //attache event listener to thumb
     addLikeListener(id, like, number_p)
 
-
     //append child divs to parent div
     dish_name.appendChild(img_div)
     dish_name.appendChild(text_div)
@@ -50,21 +50,21 @@ function add_dishes(id, name, pic) {
 }
 
 
-
+// Read the data of dishes of the specified restaurant from the firestore
 function readrestaurants(restaurant_name) {
-    // let reference = db.collection("categories").doc(category)
     db.collection("dishes").where("restaurant", "==", restaurant_name)
         .get()
         .then(function (query) {
             readRestaurantInfo(restaurant_name)
             query.forEach(function (document) {
-                // add_restaurant(document.id, document.get("name"), document.get("pictures"), "Food quality")
                 console.log(document.id, document.get("dish_name"), document.get("restaurant"))
                 add_dishes(document.id, document.get("dish_name"), document.get("images"))
             })
         })
 }
 
+
+// Read data of the specified restaurant from the firestore
 function readRestaurantInfo(restaurant_name) {
     db.collection("restaurants").where("name", "==", restaurant_name)
         .get()
@@ -76,16 +76,15 @@ function readRestaurantInfo(restaurant_name) {
                 $("#name-goes-here").text(name);
                 $("#info-goes-here").text(info);
                 $("#resPicture").attr("src", picture);
-
                 console.log(name)
                 console.log(info)
                 console.log(picture)
-
-
             })
         })
 }
 
+
+// Add eventlistner to the like button
 function addLikeListener(id, like, number_p) {
     firebase.auth().onAuthStateChanged(function (user) {
         like.addEventListener("click", function () {
@@ -95,7 +94,6 @@ function addLikeListener(id, like, number_p) {
                 .update({
                     foodqualityscore: firebase.firestore.FieldValue.increment(1) //increments like!
                 })
-
         })
     })
 
@@ -106,10 +104,10 @@ function addLikeListener(id, like, number_p) {
         })
 }
 
+
+// Write a new document containing the data of the dish on Firestore
 function writeDishes() {
     var DishesRef = db.collection("dishes");
-    // Bibimbap
-    // Tteok-bokki
     DishesRef.add({
         dish_name: "Tteok-bokki",
         images: "./imges/dishes/food1.PNG",
