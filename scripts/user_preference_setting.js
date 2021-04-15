@@ -1,3 +1,5 @@
+
+// Check if user is logged in
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
         // User is signed in.
@@ -5,15 +7,16 @@ firebase.auth().onAuthStateChanged(function (user) {
         var user = firebase.auth().currentUser;
         var uid = user.uid;
         console.log(uid)
-        // db.collection("users").doc(user.uid).update({
-        // }, {merge: true})
     } else {
         // No user is signed in.
         console.log("not log-in")
     }
 });
 
+
+// Write user custom preference setting to Firestore
 let saveButton = document.querySelector("#sButton");
+
 saveButton.addEventListener("click", function () {
     console.log("button clicked.")
 
